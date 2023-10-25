@@ -22,13 +22,7 @@ export class HotelsComponent {
     private hotelsService: HotelsService,
     public dialog: MatDialog
   ) {
-    this._loadHotels();
-  }
-
-  private _loadHotels() {
-    this.hotelsService
-      .getHotels()
-      .subscribe((data) => this.hotels = data);
+    this.loadHotels();
   }
 
   openDialog() {
@@ -38,9 +32,17 @@ export class HotelsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      result.id = crypto.randomUUID();
-      this.hotelsService.createHotel(result);
-      this._loadHotels();
+      if(result) {
+        result.id = crypto.randomUUID();
+        this.hotelsService.createHotel(result);
+        this.loadHotels();
+      }      
     });
+  }
+
+  loadHotels() {
+    this.hotelsService
+      .getHotels()
+      .subscribe((data) => this.hotels = data);
   }
 }

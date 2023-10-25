@@ -1,5 +1,4 @@
-import { Component, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +14,7 @@ import { Hotel } from '../../models/hotels.models';
   templateUrl: './hotel-detail.component.html',
   styleUrls: ['./hotel-detail.component.css']
 })
-export class HotelDetailComponent {
+export class HotelDetailComponent implements OnInit  {
   hotel: Hotel = {
     id: '',
     name: '',
@@ -26,8 +25,16 @@ export class HotelDetailComponent {
   };
 
   constructor(
-    public dialogRef: MatDialogRef<HotelDetailComponent>
-  ) {}
+    public dialogRef: MatDialogRef<HotelDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+  }
+
+  ngOnInit(): void { 
+    if (this.data.hotel) {
+      this.hotel = this.data.hotel;
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

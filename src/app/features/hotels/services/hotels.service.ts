@@ -18,6 +18,10 @@ export class HotelsService {
     this.hotels.push(hotel);
   }
 
+  updateHotel(hotel: Hotel) {    
+    this.hotels = this.hotels.map(obj => obj.id === hotel.id ? { ...hotel } : obj);
+  }
+
   hotels: Hotel[] = [ 
     {
       id: '001',
