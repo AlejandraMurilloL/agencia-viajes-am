@@ -13,9 +13,15 @@ import { HotelsService } from '../../services/hotels.service';
 @Component({
   selector: 'app-hotel-card',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatSlideToggleModule, MatIconModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './hotel-card.component.html',
-  styleUrls: ['./hotel-card.component.css']
+  styleUrls: ['./hotel-card.component.css'],
 })
 export class HotelCardComponent {
   @Input() hotel!: Hotel;
@@ -23,14 +29,13 @@ export class HotelCardComponent {
 
   constructor(
     private hotelsService: HotelsService,
-    public dialog: MatDialog) {
-    
-  }
+    public dialog: MatDialog
+  ) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(HotelDetailComponent, {
       width: '400px',
-      data: { hotel: { ...this.hotel } }
+      data: { hotel: { ...this.hotel } },
     });
 
     dialogRef.afterClosed().subscribe(result => {

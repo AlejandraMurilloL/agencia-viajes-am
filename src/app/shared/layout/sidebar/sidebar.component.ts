@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -11,22 +11,33 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatSidenavModule, MatIconModule, MatToolbarModule, MatListModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonModule,
+  ],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
   title = 'agencia-viajes';
   isCollapsed = false;
-  isMobile= true;
+  isMobile = true;
 
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  constructor(
+    private observer: BreakpointObserver,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-      if(screenSize.matches){
+    this.observer.observe(['(max-width: 800px)']).subscribe(screenSize => {
+      if (screenSize.matches) {
         this.isMobile = true;
       } else {
         this.isMobile = false;
@@ -35,7 +46,7 @@ export class SidebarComponent {
   }
 
   toggleMenu() {
-    if(this.isMobile){
+    if (this.isMobile) {
       this.sidenav.toggle();
       this.isCollapsed = false;
     } else {
@@ -45,6 +56,6 @@ export class SidebarComponent {
   }
 
   navigateMenu(menu: string) {
-    this.router.navigate([menu])
+    this.router.navigate([menu]);
   }
 }

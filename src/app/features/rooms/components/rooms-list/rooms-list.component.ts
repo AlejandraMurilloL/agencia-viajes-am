@@ -9,17 +9,31 @@ import { Room } from '../../models/rooms.models';
 @Component({
   selector: 'app-rooms-list',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './rooms-list.component.html',
-  styleUrls: ['./rooms-list.component.css']
+  styleUrls: ['./rooms-list.component.css'],
 })
 export class RoomsListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() rooms: Room[] = [];
-  
-  displayedColumns: string[] = ['Name', 'BaseCost', 'Taxes', 'RoomType', 'Location', 'Active', 'Actions'];
+
+  displayedColumns: string[] = [
+    'Name',
+    'BaseCost',
+    'Taxes',
+    'RoomType',
+    'Location',
+    'Active',
+    'Actions',
+  ];
   dataSource!: MatTableDataSource<Room>;
-  
+
   ngAfterViewInit() {
     this.dataSource = new MatTableDataSource(this.rooms);
     this.dataSource.paginator = this.paginator;

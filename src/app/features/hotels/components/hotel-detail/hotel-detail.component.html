@@ -1,31 +1,46 @@
-<h1 mat-dialog-title>{{ hotel.id ? 'Editar Hotel' : 'Nuevo Hotel'}}</h1>
+<h1 mat-dialog-title>{{ hotel.id ? 'Editar Hotel' : 'Nuevo Hotel' }}</h1>
 <div mat-dialog-content>
-    <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Ingrese el nombre" [(ngModel)]="hotel.name" required>
-          <mat-icon matSuffix>business</mat-icon>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Ciudad</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="hotel.city" required  >
-          <mat-icon matSuffix>place</mat-icon>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline">
-            <mat-label>Descripción</mat-label>
-            <textarea matInput 
-               placeholder="Ingrese la descripción" 
-               [(ngModel)]="hotel.description"
-               rows="4">
-            </textarea>
-        </mat-form-field> 
-    </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        placeholder="Ingrese el nombre"
+        [(ngModel)]="hotel.name"
+        required />
+      <mat-icon matSuffix>business</mat-icon>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Ciudad</mat-label>
+      <input
+        matInput
+        placeholder="Ingrese la ubicación"
+        [(ngModel)]="hotel.city"
+        required />
+      <mat-icon matSuffix>place</mat-icon>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        matInput
+        placeholder="Ingrese la descripción"
+        [(ngModel)]="hotel.description"
+        rows="4">
+      </textarea>
+    </mat-form-field>
+  </p>
 </div>
 <div mat-dialog-actions class="buttons-container">
   <button mat-raised-button (click)="onNoClick()">No Thanks</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="hotel" cdkFocusInitial>Ok</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="hotel"
+    cdkFocusInitial>
+    Ok
+  </button>
 </div>

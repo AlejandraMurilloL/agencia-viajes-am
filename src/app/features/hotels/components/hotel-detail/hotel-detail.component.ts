@@ -1,5 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,27 +14,33 @@ import { Hotel } from '../../models/hotels.models';
 @Component({
   selector: 'app-hotel-detail',
   standalone: true,
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule],
+  imports: [
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './hotel-detail.component.html',
-  styleUrls: ['./hotel-detail.component.css']
+  styleUrls: ['./hotel-detail.component.css'],
 })
-export class HotelDetailComponent implements OnInit  {
+export class HotelDetailComponent implements OnInit {
   hotel: Hotel = {
     id: '',
     name: '',
     description: '',
     city: '',
     active: true,
-    rooms: []
+    rooms: [],
   };
 
   constructor(
     public dialogRef: MatDialogRef<HotelDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-  }
+  ) {}
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     if (this.data.hotel) {
       this.hotel = this.data.hotel;
     }
