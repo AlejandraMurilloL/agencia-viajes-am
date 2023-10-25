@@ -1,0 +1,17 @@
+.slide, .card-actions {
+    position: absolute;
+    right: 5px;
+}
+  
+.card {
+    margin: 5px;
+}
+
+.place {
+    font-size: 0.8rem;
+    color: grey;
+}
+
+mat-card {
+    width: 300px;
+}

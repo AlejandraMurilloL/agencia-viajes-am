@@ -1,0 +1,20 @@
+<mat-card class="mat-elevation-z4 card">
+    <mat-card-header>
+        <mat-card-title>{{ hotel.name }}</mat-card-title>
+        <mat-slide-toggle class="slide" color="accent" [checked]="hotel.active" [disabled]="false">
+        </mat-slide-toggle>
+    </mat-card-header>
+    <img mat-card-image
+        src="https://res.cloudinary.com/simpleview/image/upload/v1654733490/clients/orlandofl/5900_pool_b92df465-0c67-4161-b8bb-67f9fc301094.jpg" />
+    <mat-card-content>
+        <p class="place">{{ hotel.city }}</p>
+        <p>{{ hotel.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="card-actions">
+            <button mat-icon-button title="Editar" color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

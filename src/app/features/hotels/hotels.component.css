@@ -1,0 +1,14 @@
+.button-container {
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+}
+
+.content {
+    padding: 16px;
+}
+
+.cards-container {
+    display: inline-flex;
+    flex-flow: row wrap;
+}
