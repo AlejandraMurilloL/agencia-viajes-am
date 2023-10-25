@@ -14,6 +14,10 @@ export class HotelsService {
     return of(hotels);
   }
 
+  createHotel(hotel: Hotel) {
+    this.hotels.push(hotel);
+  }
+
   hotels: Hotel[] = [ 
     {
       id: '001',
