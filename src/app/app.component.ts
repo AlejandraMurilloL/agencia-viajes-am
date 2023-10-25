@@ -8,7 +8,7 @@ import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, SidebarComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'agencia-viajes-am';

@@ -1,52 +1,58 @@
 <div class="mat-elevation-z8 rooms-list">
-    <table mat-table *ngIf="dataSource" [dataSource]="dataSource">
-  
-      <ng-container matColumnDef="Name">
-        <th mat-header-cell *matHeaderCellDef> Nombre</th>
-        <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="BaseCost">
-        <th mat-header-cell *matHeaderCellDef> Costo Base </th>
-        <td mat-cell *matCellDef="let element"> {{ element.BaseCost | currency }} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="Taxes">
-        <th mat-header-cell *matHeaderCellDef> Impuestos </th>
-        <td mat-cell *matCellDef="let element"> {{ element.Taxes | currency }} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="RoomType">
-        <th mat-header-cell *matHeaderCellDef> Tipo de Habitación </th>
-        <td mat-cell *matCellDef="let element"> {{ element.RoomType }} </td>
-      </ng-container>
+  <table mat-table *ngIf="dataSource" [dataSource]="dataSource">
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="Location">
-        <th mat-header-cell *matHeaderCellDef> Ubicación </th>
-        <td mat-cell *matCellDef="let element"> {{ element.Location }} </td>
-      </ng-container>
+    <ng-container matColumnDef="BaseCost">
+      <th mat-header-cell *matHeaderCellDef>Costo Base</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.BaseCost | currency }}
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="Active">
-        <th mat-header-cell *matHeaderCellDef> Activa </th>
-        <td mat-cell *matCellDef="let element"> {{ element.Active ? 'SI' : 'NO' }} </td>
-      </ng-container>
+    <ng-container matColumnDef="Taxes">
+      <th mat-header-cell *matHeaderCellDef>Impuestos</th>
+      <td mat-cell *matCellDef="let element">{{ element.Taxes | currency }}</td>
+    </ng-container>
 
-      <<ng-container matColumnDef="Actions">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>        
-      </ng-container>
-      
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
-  </div>
+    <ng-container matColumnDef="RoomType">
+      <th mat-header-cell *matHeaderCellDef>Tipo de Habitación</th>
+      <td mat-cell *matCellDef="let element">{{ element.RoomType }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Location">
+      <th mat-header-cell *matHeaderCellDef>Ubicación</th>
+      <td mat-cell *matCellDef="let element">{{ element.Location }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Active">
+      <th mat-header-cell *matHeaderCellDef>Activa</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.Active ? 'SI' : 'NO' }}
+      </td>
+    </ng-container>
+
+    <<ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="accent"
+          aria-label="Example icon button with a menu icon">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

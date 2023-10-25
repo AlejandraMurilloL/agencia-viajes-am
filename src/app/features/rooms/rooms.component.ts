@@ -11,19 +11,18 @@ import { RoomsService } from './services/rooms.service';
   standalone: true,
   imports: [CommonModule, MatIconModule, MatButtonModule, RoomsListComponent],
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.css']
+  styleUrls: ['./rooms.component.css'],
 })
-export class RoomsComponent implements OnInit  {
+export class RoomsComponent implements OnInit {
   rooms: Room[] = [];
 
-  constructor(private roomsService: RoomsService) {    
-  }
+  constructor(private roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    this._loadRooms();    
+    this._loadRooms();
   }
 
   private _loadRooms() {
-    this.roomsService.getRooms().subscribe(data => this.rooms = data);
+    this.roomsService.getRooms().subscribe(data => (this.rooms = data));
   }
 }

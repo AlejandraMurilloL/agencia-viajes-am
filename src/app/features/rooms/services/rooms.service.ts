@@ -3,15 +3,14 @@ import { of } from 'rxjs';
 import { Room } from '../models/rooms.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoomsService {
-
-  constructor() { }
+  constructor() {}
 
   getRooms() {
     const rooms: Room[] = this.rooms;
-    return of(rooms);;
+    return of(rooms);
   }
 
   rooms: Room[] = [
@@ -22,7 +21,7 @@ export class RoomsService {
       Taxes: 10000,
       RoomType: 'Doble',
       Location: 'Piso 2',
-      Active: true
+      Active: true,
     },
     {
       Id: '002',
@@ -31,7 +30,7 @@ export class RoomsService {
       Taxes: 10000,
       RoomType: 'Doble',
       Location: 'Piso 2',
-      Active: true
+      Active: true,
     },
     {
       Id: '001',
@@ -40,7 +39,7 @@ export class RoomsService {
       Taxes: 10000,
       RoomType: 'Suit',
       Location: 'Piso 3',
-      Active: true
-    }
-  ]
+      Active: true,
+    },
+  ];
 }
