@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{ room.Id ? 'Editar Habitación' : 'Nueva Habitación'}}</h1>
+<div mat-dialog-content>
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ingrese el nombre" [(ngModel)]="room.Name" required>
+          <mat-icon matSuffix>business</mat-icon>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Costo Base</mat-label>
+          <input type="number" matInput placeholder="Ingrese el costo base" [(ngModel)]="room.BaseCost" required  >
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Impuestos</mat-label>
+          <input type="number" matInput placeholder="Ingrese el valor de los impuestos" [(ngModel)]="room.Taxes" required  >
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de Habitación</mat-label>
+            <mat-select [(ngModel)]="room.RoomTypeId">
+              <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.Id">{{ roomType.Name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Ubicación</mat-label>
+          <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="room.Location" required>
+          <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+    </p>
+</div>
+<div mat-dialog-actions class="buttons-container">
+  <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="room" cdkFocusInitial>Ok</button>
+</div>
+

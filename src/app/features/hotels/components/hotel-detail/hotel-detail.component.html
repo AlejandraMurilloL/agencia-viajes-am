@@ -1,16 +1,16 @@
-<h1 mat-dialog-title>{{ hotel.id ? 'Editar Hotel' : 'Nuevo Hotel'}}</h1>
+<h1 mat-dialog-title>{{ hotel.Id ? 'Editar Hotel' : 'Nuevo Hotel'}}</h1>
 <div mat-dialog-content>
     <p>
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Ingrese el nombre" [(ngModel)]="hotel.name" required>
+          <input matInput placeholder="Ingrese el nombre" [(ngModel)]="hotel.Name" required>
           <mat-icon matSuffix>business</mat-icon>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="outline">
           <mat-label>Ciudad</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="hotel.city" required  >
+          <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="hotel.City" required  >
           <mat-icon matSuffix>place</mat-icon>
         </mat-form-field>
     </p>
@@ -19,7 +19,7 @@
             <mat-label>Descripción</mat-label>
             <textarea matInput 
                placeholder="Ingrese la descripción" 
-               [(ngModel)]="hotel.description"
+               [(ngModel)]="hotel.Description"
                rows="4">
             </textarea>
         </mat-form-field> 

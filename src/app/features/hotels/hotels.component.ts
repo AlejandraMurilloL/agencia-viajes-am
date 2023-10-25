@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { HotelCardComponent } from './components/hotel-card/hotel-card.component';
+import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
 import { Hotel } from './models/hotels.models';
 import { HotelsService } from './services/hotels.service';
-import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog'
-import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.component';
 
 @Component({
   selector: 'app-hotels',
@@ -22,7 +22,7 @@ export class HotelsComponent {
     private hotelsService: HotelsService,
     public dialog: MatDialog
   ) {
-    this.loadHotels();
+    this._loadHotels();
   }
 
   openDialog() {
@@ -33,14 +33,18 @@ export class HotelsComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        result.id = crypto.randomUUID();
+        result.Id = crypto.randomUUID();
         this.hotelsService.createHotel(result);
-        this.loadHotels();
+        this._loadHotels();
       }      
     });
   }
 
-  loadHotels() {
+  onEditHotel() {
+    this._loadHotels();
+  }
+
+  private _loadHotels() {
     this.hotelsService
       .getHotels()
       .subscribe((data) => this.hotels = data);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Hotel } from '../models/hotels.models';
 import { of } from 'rxjs';
+import { Hotel } from '../models/hotels.models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,33 +19,33 @@ export class HotelsService {
   }
 
   updateHotel(hotel: Hotel) {    
-    this.hotels = this.hotels.map(obj => obj.id === hotel.id ? { ...hotel } : obj);
+    this.hotels = this.hotels.map(obj => obj.Id === hotel.Id ? { ...hotel } : obj);
   }
 
   hotels: Hotel[] = [ 
     {
-      id: '001',
-      name: 'Hotel Gales',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
-      city: 'Sogamoso, Boyacá',
-      active: true,
-      rooms: []
+      Id: '001',
+      Name: 'Hotel Gales',
+      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
+      City: 'Sogamoso, Boyacá',
+      Active: true,
+      Rooms: []
     },
     {
-      id: '002',
-      name: 'Hotel Panorama',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
-      city: 'Paipa, Boyacá',
-      active: false,
-      rooms: []
+      Id: '002',
+      Name: 'Hotel Panorama',
+      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
+      City: 'Paipa, Boyacá',
+      Active: false,
+      Rooms: []
     },
     {
-      id: '003',
-      name: 'Hotel Zuhe',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
-      city: 'Paipa, Boyacá',
-      active: true,
-      rooms: []
+      Id: '003',
+      Name: 'Hotel Zuhe',
+      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
+      City: 'Paipa, Boyacá',
+      Active: true,
+      Rooms: []
     },
   ];
 }

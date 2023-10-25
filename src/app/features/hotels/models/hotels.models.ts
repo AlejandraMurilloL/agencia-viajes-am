@@ -1,13 +1,13 @@
 export interface Hotel {
-    id: string;
-    name: string;
-    description: string;
-    city: string;
-    active: boolean;
-    rooms: HotelRoom[];
+    Id: string;
+    Name: string;
+    Description: string;
+    City: string;
+    Active: boolean;
+    Rooms: HotelRoom[];
 }
 
 export interface HotelRoom {
-    id: string;
-    name: string;
+    Id: string;
+    Name: string;
 }

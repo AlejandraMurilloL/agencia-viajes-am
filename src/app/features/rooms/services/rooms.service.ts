@@ -14,6 +14,16 @@ export class RoomsService {
     return of(rooms);;
   }
 
+  createRoom(room: Room) {
+    this.rooms.push(room);
+  }
+
+  updateRoom(room: Room) {   
+    console.log(room); 
+    this.rooms = this.rooms.map(obj => obj.Id === room.Id ? { ...room } : obj);
+    console.log(this.rooms);
+  }
+
   rooms: Room[] = [
     {
       Id: '001',
@@ -21,6 +31,7 @@ export class RoomsService {
       BaseCost: 110000,
       Taxes: 10000,
       RoomType: 'Doble',
+      RoomTypeId: '001',
       Location: 'Piso 2',
       Active: true
     },
@@ -30,6 +41,7 @@ export class RoomsService {
       BaseCost: 110002,
       Taxes: 10000,
       RoomType: 'Doble',
+      RoomTypeId: '002',
       Location: 'Piso 2',
       Active: true
     },
@@ -39,6 +51,7 @@ export class RoomsService {
       BaseCost: 110003,
       Taxes: 10000,
       RoomType: 'Suit',
+      RoomTypeId: '003',
       Location: 'Piso 3',
       Active: true
     }

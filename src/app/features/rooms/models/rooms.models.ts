@@ -5,6 +5,12 @@ export interface Room {
 	BaseCost: number;
 	Taxes: number;
 	RoomType: string;
+	RoomTypeId: string;
 	Location: string;
 	Active: boolean;
+}
+
+export interface RoomType {
+	Id: string,
+	Name: string;
 }
