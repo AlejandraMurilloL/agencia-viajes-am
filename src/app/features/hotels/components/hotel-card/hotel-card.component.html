@@ -7,13 +7,19 @@
     <img mat-card-image
         src="https://res.cloudinary.com/simpleview/image/upload/v1654733490/clients/orlandofl/5900_pool_b92df465-0c67-4161-b8bb-67f9fc301094.jpg" />
     <mat-card-content>
-        <p class="place">{{ hotel.City }}</p>
+        <div class="place-room-number">
+            <p>{{ hotel.City }}</p>
+            <i class="fa fa-bed">{{ hotel.Rooms.length }}</i>
+        </div>
         <p>{{ hotel.Description }}</p>
     </mat-card-content>
     <mat-card-actions>
         <div class="card-actions">
-            <button mat-icon-button title="Editar" color="primary" (click)="openDialog()">
-                <mat-icon>edit</mat-icon>
+            <button mat-icon-button title="Habitaciones" color="accent" (click)="openRoomsDialog()">
+                <mat-icon>hotel</mat-icon>
+            </button>
+            <button mat-icon-button title="Editar" color="primary" (click)="openHotelDialog()">
+                <mat-icon>remove_red_eye</mat-icon>
             </button>
         </div>
     </mat-card-actions>

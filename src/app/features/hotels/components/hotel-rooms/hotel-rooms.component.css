@@ -1,0 +1,27 @@
+.buttons-container {
+    display: flex;
+    justify-content: end;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.form-room {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.form-room-field {
+    width: 45%;
+}
+
+.rooms-list {
+    margin: 10px;
+}
+
+mat-tab-group {
+    margin-top: 20px;
+}

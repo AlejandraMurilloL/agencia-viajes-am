@@ -1,0 +1,120 @@
+<h1 mat-dialog-title>{{ hotel.Name }}</h1>
+<div mat-dialog-content>
+  <mat-accordion class="add-room-container" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Agregar Habitación
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="form-room">
+        <div class="form-room-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ingrese el nombre" [(ngModel)]="room.Name" required>
+            <mat-icon matSuffix>business</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="form-room-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Costo Base</mat-label>
+            <input type="number" matInput placeholder="Ingrese el costo base" [(ngModel)]="room.BaseCost" required>
+            <mat-icon matSuffix>attach_money</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="form-room-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Impuestos</mat-label>
+            <input type="number" matInput placeholder="Ingrese el valor de los impuestos" [(ngModel)]="room.Taxes"
+              required>
+            <mat-icon matSuffix>attach_money</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="form-room-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de Habitación</mat-label>
+            <mat-select [(ngModel)]="room.RoomTypeId">
+              <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.Id">{{ roomType.Name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-room-field">
+          <mat-form-field appearance="outline">
+            <mat-label>Ubicación</mat-label>
+            <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="room.Location" required>
+            <mat-icon matSuffix>place</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button color="accent" (click)="onAddRoom()">Agregar</button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+  <mat-tab-group>
+    <mat-tab label="Listado de habitaciones">
+
+      <div class="rooms-list">
+        <table mat-table *ngIf="dataSource" [dataSource]="dataSource">
+
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Nombre</th>
+            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="BaseCost">
+            <th mat-header-cell *matHeaderCellDef> Costo Base </th>
+            <td mat-cell *matCellDef="let element"> {{ element.BaseCost | currency }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Taxes">
+            <th mat-header-cell *matHeaderCellDef> Impuestos </th>
+            <td mat-cell *matCellDef="let element"> {{ element.Taxes | currency }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="RoomType">
+            <th mat-header-cell *matHeaderCellDef> Tipo de Habitación </th>
+            <td mat-cell *matCellDef="let element"> {{ element.RoomType }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Location">
+            <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+            <td mat-cell *matCellDef="let element"> {{ element.Location }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Active">
+            <th mat-header-cell *matHeaderCellDef> Activa </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-slide-toggle class="slide" color="accent" [checked]="element.Active" [disabled]="false">
+              </mat-slide-toggle>
+            </td>
+          </ng-container>
+
+          <<ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements" *ngIf="hotel.Rooms.length > 5">
+        </mat-paginator>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+<div mat-dialog-actions class="buttons-container">
+  <button mat-raised-button color="primary" (click)="onNoClick()">OK</button>
+</div>

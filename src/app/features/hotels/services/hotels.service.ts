@@ -29,7 +29,17 @@ export class HotelsService {
       Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
       City: 'Sogamoso, Boyacá',
       Active: true,
-      Rooms: []
+      Rooms: [{
+        Id: '001',
+        BaseCost: 80000,
+        Taxes: 0,
+        Active: true,
+        Name: '201',
+        RoomTypeId: '001',
+        Location: 'Piso 2',
+        HotelId: '001',
+        RoomType: ''
+      }]
     },
     {
       Id: '002',

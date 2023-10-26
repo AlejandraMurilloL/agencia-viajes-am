@@ -7,9 +7,19 @@
     margin: 5px;
 }
 
-.place {
+.place-room-number > p {
+    display: inline;
+}
+
+.place-room-number {
     font-size: 0.8rem;
     color: grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+i {
+    font-size: 1rem;
 }
 
 mat-card {
