@@ -25,3 +25,11 @@ export interface SearchReservation {
     PeopleCount: number;
     City: string;
 }
+
+export interface SearchReservationResult {
+    StartDate: Date;
+    EndDate: Date;
+    Hotel: string;
+    Room: string;
+    Price: number;
+}

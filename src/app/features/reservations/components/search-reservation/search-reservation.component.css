@@ -4,3 +4,7 @@
     flex-flow: row wrap;
     justify-content: space-between;
 }
+
+.reservations-list {
+    margin: 10px;
+}

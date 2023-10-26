@@ -7,13 +7,16 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { SearchReservation } from '../../models/reservations.models';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { SearchReservation, SearchReservationResult } from '../../models/reservations.models';
+import { ReservationsService } from '../../services/reservations.service';
 
 @Component({
   selector: 'app-search-reservation',
   standalone: true,
   imports: [CommonModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatDatepickerModule,
-    MatNativeDateModule, MatButtonModule],
+    MatNativeDateModule, MatButtonModule, MatTableModule, MatPaginatorModule],
   templateUrl: './search-reservation.component.html',
   styleUrls: ['./search-reservation.component.css']
 })
@@ -25,7 +28,21 @@ export class SearchReservationComponent {
     City: ''
   }
 
+  showSearchResult: boolean = false;
+  displayedColumns: string[] = ['Hotel', 'Room', 'StartDate', 'EndDate', 'Price', 'Actions'];
+  dataSource: MatTableDataSource<SearchReservationResult> = new MatTableDataSource();
+
+  constructor(private reservationService: ReservationsService) {
+    
+  }
+
   onSearch() {
+    this.showSearchResult = true;
+    this._loadAvailableRooms();
     console.log(this.search);
+  }
+
+  private _loadAvailableRooms() {
+    this.reservationService.getAvailableRooms().subscribe(data => this.dataSource = new MatTableDataSource(data));
   }
 }
