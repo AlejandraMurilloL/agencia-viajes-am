@@ -20,6 +20,12 @@
             <span *ngIf="!isCollapsed">Reservas</span>
           </span>
         </a>
+        <a mat-list-item (click)="navigateMenu('buscar-reservas')">
+          <span class="entry">
+            <mat-icon>event_available</mat-icon>
+            <span *ngIf="!isCollapsed">Crear Reserva</span>
+          </span>
+        </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

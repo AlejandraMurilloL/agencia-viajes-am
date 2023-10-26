@@ -1,0 +1,6 @@
+.form-room {
+    margin: 20px 10%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}

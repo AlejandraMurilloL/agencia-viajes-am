@@ -1,0 +1,35 @@
+<div class="form-room">
+    <div class="form-room-field">
+        <mat-form-field class="example-form-field">
+            <mat-label>Fecha Reserva</mat-label>
+            <mat-date-range-input
+              [rangePicker]="campaignOnePicker"
+              [comparisonStart]="search.StartDate"
+              [comparisonEnd]="search.EndDate">
+              <input matStartDate placeholder="Start date" [(ngModel)]="search.StartDate">
+              <input matEndDate placeholder="End date" [(ngModel)]="search.EndDate">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+          </mat-form-field>
+    </div>
+    <div class="form-room-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Cantidad de personas</mat-label>
+        <input type="number" matInput placeholder="Ingrese la cantidad de personas" [(ngModel)]="search.PeopleCount" required>
+        <mat-icon matSuffix>people</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="form-room-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Ciudad</mat-label>
+        <input matInput placeholder="Ingrese la ciudad de destino" [(ngModel)]="search.City"
+          required>
+        <mat-icon matSuffix>place</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="accent" (click)="onSearch()">Buscar</button>
+    </div>
+  </div>
