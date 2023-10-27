@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +17,7 @@ import { ReservationsService } from '../../services/reservations.service';
   selector: 'app-search-reservation',
   standalone: true,
   imports: [CommonModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatDatepickerModule,
-    MatNativeDateModule, MatButtonModule, MatTableModule, MatPaginatorModule],
+    MatNativeDateModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatCardModule],
   templateUrl: './search-reservation.component.html',
   styleUrls: ['./search-reservation.component.css']
 })
