@@ -14,6 +14,17 @@
     width: 45%;
 }
 
+.form-reservation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.form-field {
+    width: 45%;
+}
+
 mat-form-field {
     width: 100%;
 }

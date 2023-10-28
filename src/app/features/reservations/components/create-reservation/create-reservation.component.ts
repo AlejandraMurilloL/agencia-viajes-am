@@ -3,17 +3,20 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { Reservation } from '../../models/reservations.models';
+import { Guest, Reservation } from '../../models/reservations.models';
 
 @Component({
   selector: 'app-create-reservation',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatStepperModule, MatFormFieldModule, MatInputModule, FormsModule, MatTabsModule, MatIconModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatStepperModule, MatFormFieldModule, MatInputModule, FormsModule, MatTabsModule, MatIconModule, MatExpansionModule, MatPaginatorModule, MatTableModule],
   templateUrl: './create-reservation.component.html',
   styleUrls: ['./create-reservation.component.css']
 })
@@ -28,6 +31,20 @@ export class CreateReservationComponent implements OnInit {
     ContactPhone: '',
     Guests: []
   };
+
+  guest: Guest = {
+    FirstName: '',
+    LastName: '',
+    Birthday: new Date(),
+    DocumentType: '',
+    DocumentNumber: '',
+    Gender: '',
+    Email: '',
+    ContactPhone: ''
+  }
+
+  displayedColumns: string[] = ['FirstName', 'LastName', 'Birthday', 'Gender', 'DocumentType', 'DocumentNumber', 'Email', 'ContactPhone'];
+  dataSource: MatTableDataSource<Guest> = new MatTableDataSource();
 
   constructor(
     public dialogRef: MatDialogRef<CreateReservationComponent>,
