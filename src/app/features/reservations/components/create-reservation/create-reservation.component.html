@@ -1,1 +1,60 @@
-<p>create-reservation works!</p>
+<h1 mat-dialog-title>Confirmar Reserva</h1>
+<div mat-dialog-content>
+    <mat-tab-group>
+        <mat-tab label="Datos Básicos">
+            <div class="basic-info tab-content">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Hotel</mat-label>
+                        <input matInput placeholder="Ingrese el nombre" [(ngModel)]="reservation.Hotel" [disabled]="true">
+                        <mat-icon matSuffix>business</mat-icon>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Habitación</mat-label>
+                        <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="reservation.Room" [disabled]="true">
+                        <mat-icon matSuffix>hotel</mat-icon>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline" [ariaReadOnly]="true">
+                        <mat-label>Fecha de llegada</mat-label>
+                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.StartDate" [disabled]="true">
+                        <mat-icon matSuffix>calendar_today</mat-icon>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha de salida</mat-label>
+                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.EndDate" [disabled]="true">
+                        <mat-icon matSuffix>calendar_today</mat-icon>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contacto de emergencia</mat-label>
+                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.ContactName" required>
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nro. Contacto</mat-label>
+                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.ContactPhone" required>
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                </p>
+            </div>
+        </mat-tab>
+        <mat-tab label="Huespedes">
+            <div class="basic-info tab-content">
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
+
+<div mat-dialog-actions class="buttons-container">
+    <button mat-raised-button color="primary" (click)="onNoClick()">OK</button>
+</div>

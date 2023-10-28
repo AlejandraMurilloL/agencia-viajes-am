@@ -54,8 +54,8 @@ export class ReservationsService {
 
   availableRooms: SearchReservationResult[] = [
     {
-      StartDate: new Date(),
-      EndDate: new Date(),
+      StartDate: new Date(2023, 12, 15),
+      EndDate: new Date(2023, 12, 25),
       Hotel: 'Gales',
       Room: '202',
       Price: 155000

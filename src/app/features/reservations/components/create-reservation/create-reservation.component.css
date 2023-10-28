@@ -1,0 +1,19 @@
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.basic-info {
+    display: flex;
+    flex-flow: row wrap;    
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.basic-info > p {
+    width: 45%;
+}
+
+mat-form-field {
+    width: 100%;
+}
