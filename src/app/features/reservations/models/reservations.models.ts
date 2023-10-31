@@ -18,3 +18,18 @@ export interface Guest {
     Email: string;
     ContactPhone: string;
 }
+
+export interface SearchReservation {
+    StartDate: Date;
+    EndDate: Date;
+    PeopleCount: number;
+    City: string;
+}
+
+export interface SearchReservationResult {
+    StartDate: Date;
+    EndDate: Date;
+    Hotel: string;
+    Room: string;
+    Price: number;
+}

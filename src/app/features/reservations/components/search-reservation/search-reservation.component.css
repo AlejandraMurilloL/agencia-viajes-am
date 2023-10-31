@@ -1,0 +1,22 @@
+.form-room {
+    /* margin: 20px 10%; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.reservations-list, mat-card {
+    margin: 10px;
+}
+
+.form-field {
+    width: 30%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-actions {
+    justify-content: end;
+}

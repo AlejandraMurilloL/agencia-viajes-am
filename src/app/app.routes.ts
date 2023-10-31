@@ -13,5 +13,9 @@ export const routes: Routes = [
     {
         path: 'reservas',
         loadComponent: () => import('./features/reservations/reservations.component').then(comp => comp.ReservationsComponent)
+    },
+    {
+        path: 'buscar-reservas',
+        loadComponent: () => import('./features/reservations/components/search-reservation/search-reservation.component').then(comp => comp.SearchReservationComponent)
     }
 ];

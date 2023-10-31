@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { Reservation } from '../models/reservations.models';
+import { Reservation, SearchReservationResult } from '../models/reservations.models';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,11 @@ export class ReservationsService {
   getReservations() {
     const reservations: Reservation[] = this.reservations;
     return of(reservations);
+  }
+
+  getAvailableRooms() {
+    const available: SearchReservationResult[] = this.availableRooms;
+    return of(available);
   }
 
   reservations: Reservation[] = [
@@ -46,5 +51,15 @@ export class ReservationsService {
       ]
     }
   ];
+
+  availableRooms: SearchReservationResult[] = [
+    {
+      StartDate: new Date(2023, 12, 15),
+      EndDate: new Date(2023, 12, 25),
+      Hotel: 'Gales',
+      Room: '202',
+      Price: 155000
+    }
+  ]
 
 }
