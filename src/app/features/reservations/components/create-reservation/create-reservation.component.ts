@@ -55,7 +55,6 @@ export class CreateReservationComponent implements OnInit {
   ngOnInit(): void { 
     if (this.data.search) {
       const { StartDate, EndDate, Hotel, Room } = this.data.search;
-      console.log(this.data.search)
       this.reservation.Hotel = Hotel;
       this.reservation.Room = Room;
       this.reservation.StartDate = StartDate.toLocaleDateString();

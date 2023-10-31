@@ -47,7 +47,6 @@ export class SearchReservationComponent {
   }
 
   openDialog(search: SearchReservationResult) {
-    console.log(search);
     const dialogRef = this.dialog.open(CreateReservationComponent, {
       width: '800px',
       data: { search: { ...search } }

@@ -45,9 +45,6 @@ export class ReservationsComponent implements OnInit {
   }
 
   private _loadReservations() {
-    this.reservationsService.getReservations().subscribe(data => {
-      console.log(data);
-      this.dataSource = new MatTableDataSource(data);
-    });
+    this.reservationsService.getReservations().subscribe(data => this.dataSource = new MatTableDataSource(data));
   }
 }

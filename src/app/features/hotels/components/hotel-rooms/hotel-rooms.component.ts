@@ -66,7 +66,6 @@ export class HotelRoomsComponent implements OnInit {
   }
 
   onAddRoom() {
-    console.log(this.room);
   }
 
   onNoClick(): void {
