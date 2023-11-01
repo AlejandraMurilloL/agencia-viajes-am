@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -16,12 +16,13 @@ import { Hotel } from '../../models/hotels.models';
 @Component({
   selector: 'app-hotel-detail',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatTabsModule, MatTableModule, MatPaginatorModule, MatOptionModule, MatSelectModule],
+  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTabsModule, MatTableModule, MatPaginatorModule, MatOptionModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './hotel-detail.component.html',
   styleUrls: ['./hotel-detail.component.css']
 })
 export class HotelDetailComponent implements OnInit  {
 
+  form!: FormGroup;
   hotel: Hotel = {
     Id: '',
     Name: '',
@@ -32,6 +33,7 @@ export class HotelDetailComponent implements OnInit  {
   };
 
   constructor(
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<HotelDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -41,9 +43,31 @@ export class HotelDetailComponent implements OnInit  {
     if (this.data.hotel) {
       this.hotel = this.data.hotel;
     }
+
+    this.form = this.formBuilder.group({
+      Name        : [this.hotel.Name, Validators.required],
+      City        : [this.hotel.City, Validators.required],
+      Description : [this.hotel.Description],
+      Id          : [this.hotel.Id],
+      Active      : [this.hotel.Active ?? true],
+      Rooms       : [this.hotel.Rooms ?? []]
+    });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  checkForErrorsIn(formControlName: string): string {
+
+    if (!this.form.get(formControlName)?.touched || 
+        !this.form.get(formControlName)?.invalid) 
+        return '';
+
+    if (this.form.get(formControlName)?.errors?.['required']) {
+      return 'El campo es obligatorio.'
+    }
+
+    return '';
   }
 }

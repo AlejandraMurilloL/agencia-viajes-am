@@ -2,50 +2,47 @@
 <div mat-dialog-content>
     <mat-tab-group>
         <mat-tab label="Datos Básicos">
-            <div class="basic-info tab-content">
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Hotel</mat-label>
-                        <input matInput placeholder="Ingrese el nombre" [(ngModel)]="reservation.Hotel" [disabled]="true">
-                        <mat-icon matSuffix>business</mat-icon>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Habitación</mat-label>
-                        <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="reservation.Room" [disabled]="true">
-                        <mat-icon matSuffix>hotel</mat-icon>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline" [ariaReadOnly]="true">
-                        <mat-label>Fecha de llegada</mat-label>
-                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.StartDate" [disabled]="true">
-                        <mat-icon matSuffix>calendar_today</mat-icon>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Fecha de salida</mat-label>
-                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.EndDate" [disabled]="true">
-                        <mat-icon matSuffix>calendar_today</mat-icon>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Contacto de emergencia</mat-label>
-                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.ContactName" required>
-                        <mat-icon matSuffix>person</mat-icon>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Nro. Contacto</mat-label>
-                        <input matInput placeholder="Ingrese la ubicación"[(ngModel)]="reservation.ContactPhone" required>
-                        <mat-icon matSuffix>phone</mat-icon>
-                    </mat-form-field>
-                </p>
+          <form [formGroup]="form">
+            <div class="basic-info tab-content">              
+              <mat-form-field appearance="outline">
+                  <mat-label>Hotel</mat-label>
+                  <input matInput placeholder="Ingrese el nombre" formControlName="Hotel">
+                  <mat-icon matSuffix>business</mat-icon>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                  <mat-label>Habitación</mat-label>
+                  <input matInput placeholder="Ingrese la ubicación" formControlName="Room">
+                  <mat-icon matSuffix>hotel</mat-icon>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline" [ariaReadOnly]="true">
+                  <mat-label>Fecha de llegada</mat-label>
+                  <input matInput placeholder="Ingrese la ubicación" formControlName="StartDate">
+                  <mat-icon matSuffix>calendar_today</mat-icon>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                  <mat-label>Fecha de salida</mat-label>
+                  <input matInput placeholder="Ingrese la ubicación" formControlName="EndDate">
+                  <mat-icon matSuffix>calendar_today</mat-icon>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                  <mat-label>Contacto de emergencia</mat-label>
+                  <input matInput placeholder="Ingrese la ubicación" formControlName="ContactName">
+                  <mat-error>{{ checkForErrorsIn('ContactName') }}</mat-error>
+                  <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                  <mat-label>Nro. Contacto</mat-label>
+                  <input matInput placeholder="Ingrese la ubicación" formControlName="ContactPhone">
+                  <mat-error>{{ checkForErrorsIn('ContactPhone') }}</mat-error>
+                  <mat-icon matSuffix>phone</mat-icon>
+              </mat-form-field>              
             </div>
+          </form>           
         </mat-tab>
         <mat-tab label="Huespedes">
             <div class="ab-content">
@@ -56,72 +53,72 @@
                           Agregar Huesped
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <div class="form-reservation">
-                        <div class="form-field">
+                      <form [formGroup]="guestForm">
+                        <div class="form-reservation">
+
                           <mat-form-field appearance="outline">
                             <mat-label>Nombres</mat-label>
-                            <input matInput placeholder="Ingrese los nombres" [(ngModel)]="guest.FirstName" required>
+                            <input matInput placeholder="Ingrese los nombres" formControlName="FirstName">
+                            <mat-error>{{ checkForGuestErrorsIn('FirstName') }}</mat-error>
                             <mat-icon matSuffix>person</mat-icon>
                           </mat-form-field>
+                          
+                          <mat-form-field appearance="outline">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput placeholder="Ingrese los apellidos" formControlName="LastName">
+                            <mat-error>{{ checkForGuestErrorsIn('LastName') }}</mat-error>
+                            <mat-icon matSuffix>person</mat-icon>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline">
+                            <mat-label>Fecha de nacimiento</mat-label>
+                            <input matInput placeholder="Ingrese la fecha de nacimiento" formControlName="Birthday">
+                            <mat-error>{{ checkForGuestErrorsIn('Birthday') }}</mat-error>
+                            <mat-icon matSuffix>calendar_today</mat-icon>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline">
+                            <mat-label>Genero</mat-label>
+                            <input matInput placeholder="Ingrese el Genero" formControlName="Gender">
+                            <mat-error>{{ checkForGuestErrorsIn('Gender') }}</mat-error>
+                            <mat-icon matSuffix>person</mat-icon>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline">
+                            <mat-label>Tipo de documento</mat-label>
+                            <input matInput placeholder="Ingrese el tipo de documento" formControlName="DocumentType">
+                            <mat-error>{{ checkForGuestErrorsIn('DocumentType') }}</mat-error>
+                            <mat-icon matSuffix>assignment_ind</mat-icon>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline">
+                            <mat-label>Nro. de documento</mat-label>
+                            <input matInput placeholder="Ingrese el Nro. de documento" formControlName="DocumentNumber">
+                            <mat-error>{{ checkForGuestErrorsIn('DocumentNumber') }}</mat-error>
+                            <mat-icon matSuffix>assignment</mat-icon>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Ingrese el email" formControlName="Email">
+                            <mat-error>{{ checkForGuestErrorsIn('Email') }}</mat-error>
+                            <mat-icon matSuffix>email</mat-icon>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline">
+                            <mat-label>Nro. de contacto</mat-label>
+                            <input matInput placeholder="Ingrese el Nro. contacto" formControlName="ContactPhone">
+                            <mat-error>{{ checkForGuestErrorsIn('ContactPhone') }}</mat-error>
+                            <mat-icon matSuffix>phone</mat-icon>
+                          </mat-form-field>                         
+                          
+                          <div class="buttons-container">
+                            <button mat-raised-button color="accent" [disabled]="guestForm.invalid" (click)="true">Agregar</button>
+                          </div>
                         </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Apellidos</mat-label>
-                              <input matInput placeholder="Ingrese los apellidos" [(ngModel)]="guest.LastName" required>
-                              <mat-icon matSuffix>person</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Fecha de nacimiento</mat-label>
-                              <input matInput placeholder="Ingrese la fecha de nacimiento" [(ngModel)]="guest.Birthday" required>
-                              <mat-icon matSuffix>calendar_today</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Genero</mat-label>
-                              <input matInput placeholder="Ingrese el Genero" [(ngModel)]="guest.Gender" required>
-                              <mat-icon matSuffix>person</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Tipo de documento</mat-label>
-                              <input matInput placeholder="Ingrese el tipo de documento" [(ngModel)]="guest.DocumentType" required>
-                              <mat-icon matSuffix>assignment_ind</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Nro. de documento</mat-label>
-                              <input matInput placeholder="Ingrese el Nro. de documento" [(ngModel)]="guest.DocumentNumber" required>
-                              <mat-icon matSuffix>assignment</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Email</mat-label>
-                              <input matInput placeholder="Ingrese el email" [(ngModel)]="guest.Email" required>
-                              <mat-icon matSuffix>email</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        <div class="form-field">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Nro. de contacto</mat-label>
-                              <input matInput placeholder="Ingrese el Nro. contacto" [(ngModel)]="guest.ContactPhone" required>
-                              <mat-icon matSuffix>phone</mat-icon>
-                            </mat-form-field>
-                        </div>
-                        
-                        
-                        <div class="buttons-container">
-                          <button mat-raised-button color="accent" (click)="true">Agregar</button>
-                        </div>
-                      </div>
+                      </form>                      
                     </mat-expansion-panel>
-                  </mat-accordion>
-                
+                  </mat-accordion>               
                 
                   <mat-tab-group>
                     <mat-tab label="Listado de habitaciones">
@@ -188,5 +185,6 @@
 </div>
 
 <div mat-dialog-actions class="buttons-container">
-    <button mat-raised-button color="primary" (click)="onNoClick()">OK</button>
+  <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="form.value" [disabled]="form.invalid">Guardar</button>
 </div>
