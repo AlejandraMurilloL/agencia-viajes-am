@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { MatAccordion } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Hotel } from '../../models/hotels.models';
@@ -14,7 +13,12 @@ import { HotelRoomsComponent } from '../hotel-rooms/hotel-rooms.component';
 @Component({
   selector: 'app-hotel-card',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatSlideToggleModule, MatIconModule, MatButtonModule, MatExpansionModule],
+  imports: [ 
+    MatCardModule, 
+    MatSlideToggleModule, 
+    MatIconModule, 
+    MatButtonModule
+  ],
   templateUrl: './hotel-card.component.html',
   styleUrls: ['./hotel-card.component.css']
 })

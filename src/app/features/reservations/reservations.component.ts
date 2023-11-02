@@ -12,7 +12,14 @@ import { ReservationsService } from './services/reservations.service';
 @Component({
   selector: 'app-reservations',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatDialogModule],
+  imports: [
+    CommonModule, 
+    MatTableModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatPaginatorModule, 
+    MatDialogModule
+  ],
   templateUrl: './reservations.component.html',
   styleUrls: ['./reservations.component.css']
 })
