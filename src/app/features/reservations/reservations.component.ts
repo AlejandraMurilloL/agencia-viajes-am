@@ -38,16 +38,10 @@ export class ReservationsComponent implements OnInit {
     this._loadReservations();
   }
 
-  openDialog(reservation: Reservation) {
-    const dialogRef = this.dialog.open(ReservationDetailComponent, {
+  openReservationDetail(reservation: Reservation) {
+    this.dialog.open(ReservationDetailComponent, {
       width: '1100px',
       data: { Reservation: {...reservation} }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        
-      }      
     });
   }
 

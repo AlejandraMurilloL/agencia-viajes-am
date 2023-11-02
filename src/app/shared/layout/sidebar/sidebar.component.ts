@@ -1,28 +1,39 @@
-import { Component, ViewChild } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatSidenavModule, MatIconModule, MatToolbarModule, MatListModule, MatButtonModule],
+  imports: [
+    CommonModule, 
+    RouterOutlet, 
+    RouterModule,
+    MatSidenavModule, 
+    MatIconModule,
+    MatToolbarModule, 
+    MatListModule, 
+    MatButtonModule
+  ],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
   title = 'agencia-viajes';
   isCollapsed = false;
   isMobile= true;
 
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  constructor(
+    private observer: BreakpointObserver
+    ) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -42,9 +53,5 @@ export class SidebarComponent {
       this.sidenav.open();
       this.isCollapsed = !this.isCollapsed;
     }
-  }
-
-  navigateMenu(menu: string) {
-    this.router.navigate([menu])
   }
 }

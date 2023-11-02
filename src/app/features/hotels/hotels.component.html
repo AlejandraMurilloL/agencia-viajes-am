@@ -1,9 +1,9 @@
-<div class="button-container">
-    <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon" title="Crear nuevo hotel" (click)="openDialog()">
+<div class="buttons-container">
+    <button mat-fab color="accent" title="Crear nuevo hotel" (click)="openHotelDetail()">
         <mat-icon>add</mat-icon>
     </button>
 </div>
 
 <div class="content cards-container">
-    <app-hotel-card *ngFor="let hotel of hotels" [hotel]="hotel" (onHotelEdit)="onEditHotel()"/>
+    <app-hotel-card *ngFor="let hotel of hotels" [hotel]="hotel" (hotelEdited)="hotelEdited()"/>
 </div>

@@ -38,6 +38,7 @@ export class HotelDetailComponent implements OnInit  {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<HotelDetailComponent>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }

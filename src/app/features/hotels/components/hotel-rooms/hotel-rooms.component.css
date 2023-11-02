@@ -1,10 +1,10 @@
+mat-form-field {
+    width: 45%;
+}
+
 .buttons-container {
     display: flex;
     justify-content: flex-end;
-}
-
-mat-form-field {
-    width: 45%;
 }
 
 .form-room {
@@ -12,16 +12,4 @@ mat-form-field {
     flex-flow: row wrap;
     justify-content: space-between;
     margin-top: 10px;
-}
-
-.form-room-field {
-    width: 45%;
-}
-
-.rooms-list {
-    margin: 10px;
-}
-
-mat-tab-group {
-    margin-top: 20px;
 }

@@ -11,7 +11,13 @@ import { HotelsService } from './services/hotels.service';
 @Component({
   selector: 'app-hotels',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, HotelCardComponent, HotelDetailComponent, MatDialogModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    HotelCardComponent,
+    MatDialogModule
+  ],
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.css']
 })
@@ -25,7 +31,7 @@ export class HotelsComponent {
     this._loadHotels();
   }
 
-  openDialog() {
+  openHotelDetail() {
     const dialogRef = this.dialog.open(HotelDetailComponent, {
       width: '400px',
       data: {}
@@ -40,7 +46,7 @@ export class HotelsComponent {
     });
   }
 
-  onEditHotel() {
+  hotelEdited() {
     this._loadHotels();
   }
 

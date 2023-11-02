@@ -4,7 +4,9 @@
         <mat-slide-toggle class="slide" color="accent" [checked]="hotel.Active" [disabled]="false">
         </mat-slide-toggle>
     </mat-card-header>
-    <img mat-card-image
+    <img 
+        mat-card-image
+        alt="Default Hotel Image"
         src="https://res.cloudinary.com/simpleview/image/upload/v1654733490/clients/orlandofl/5900_pool_b92df465-0c67-4161-b8bb-67f9fc301094.jpg" />
     <mat-card-content>
         <div class="place-room-number">
@@ -15,10 +17,10 @@
     </mat-card-content>
     <mat-card-actions>
         <div class="card-actions">
-            <button mat-icon-button title="Habitaciones" color="accent" (click)="openRoomsDialog()">
+            <button mat-icon-button title="Habitaciones" color="accent" (click)="openHotelRooms()">
                 <mat-icon>hotel</mat-icon>
             </button>
-            <button mat-icon-button title="Editar" color="primary" (click)="openHotelDialog()">
+            <button mat-icon-button title="Editar" color="primary" (click)="openHotelDetail()">
                 <mat-icon>remove_red_eye</mat-icon>
             </button>
         </div>

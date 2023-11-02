@@ -1,5 +1,4 @@
-.form-room {
-    /* margin: 20px 10%; */
+.search-form {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -9,14 +8,10 @@
     margin: 10px;
 }
 
-.form-field {
-    width: 30%;
-}
-
 mat-form-field {
     width: 30%;
 }
 
 mat-card-actions {
-    justify-content: end;
+    justify-content: flex-end;
 }

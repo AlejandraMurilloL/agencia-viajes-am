@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{ hotel.Name }}</h1>
 <div mat-dialog-content>
-  <mat-accordion class="add-room-container" multi>
+  <mat-accordion multi>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -108,8 +108,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
-          aria-label="Select page of periodic elements" *ngIf="hotel.Rooms.length > 5">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="hotel.Rooms.length > 5">
         </mat-paginator>
       </div>
     </mat-tab>

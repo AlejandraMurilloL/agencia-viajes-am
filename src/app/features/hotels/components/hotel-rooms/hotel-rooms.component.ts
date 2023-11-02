@@ -14,6 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Hotel, Room, RoomType } from '../../models/hotels.models';
+import { HotelsService } from '../../services/hotels.service';
 
 @Component({
   selector: 'app-hotel-rooms',
@@ -71,7 +72,9 @@ export class HotelRoomsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private hotelService: HotelsService,
     public dialogRef: MatDialogRef<HotelRoomsComponent>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
@@ -90,11 +93,13 @@ export class HotelRoomsComponent implements OnInit {
       RoomType   : [this.room.RoomType ?? true],
       RoomTypeId : [this.room.RoomTypeId ?? [], Validators.required],
       Location   : [this.room.Location, Validators.required],
-      Active     : [this.room.Active ?? true]
+      Active     : [this.room.Active ?? true],
+      HotelId    : [this.hotel.Id]
     });
   }
 
   onAddRoom(room: Room) {
+    this.hotelService.addRoomToHotel(room);
   }
 
   onNoClick(): void {

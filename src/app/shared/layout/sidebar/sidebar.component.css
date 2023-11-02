@@ -2,9 +2,11 @@ h1 {
     padding: 0 1rem;
 }
 
-h2 {padding: 1rem;}
+h2 {
+    padding: 1rem;
+}
 
-mat-toolbar{
+mat-toolbar {
     position:fixed;
     top:0;
     z-index: 2;
@@ -28,7 +30,7 @@ mat-sidenav {
     }
   }
 
-mat-sidenav-content{
+mat-sidenav-content {
     padding-top: 3.5rem;
     @media screen and (min-width: 600px) {
         padding-top: 4rem;

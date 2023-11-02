@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { Reservation, SearchReservationResult } from '../models/reservations.models';
+import { AvailableRooms, Reservation } from '../models/reservations.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationsService {
-
-  constructor() { }
 
   getReservations() {
     const reservations: Reservation[] = this.reservations;
@@ -15,8 +13,12 @@ export class ReservationsService {
   }
 
   getAvailableRooms() {
-    const available: SearchReservationResult[] = this.availableRooms;
+    const available: AvailableRooms[] = this.availableRooms;
     return of(available);
+  }
+
+  confirmReservation(reservation: Reservation) {
+    this.reservations.push(reservation);
   }
 
   reservations: Reservation[] = [
@@ -52,7 +54,7 @@ export class ReservationsService {
     }
   ];
 
-  availableRooms: SearchReservationResult[] = [
+  availableRooms: AvailableRooms[] = [
     {
       StartDate: new Date(2023, 12, 15),
       EndDate: new Date(2023, 12, 25),
