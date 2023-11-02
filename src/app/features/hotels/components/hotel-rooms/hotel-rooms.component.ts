@@ -18,7 +18,22 @@ import { Hotel, Room, RoomType } from '../../models/hotels.models';
 @Component({
   selector: 'app-hotel-rooms',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatDialogModule, MatExpansionModule, MatIconModule, MatInputModule, MatButtonModule, MatSlideToggleModule, MatPaginatorModule, MatTableModule, MatTabsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    MatFormFieldModule, 
+    MatSelectModule, 
+    MatOptionModule, 
+    MatDialogModule, 
+    MatExpansionModule, 
+    MatIconModule, 
+    MatInputModule, 
+    MatButtonModule, 
+    MatSlideToggleModule, 
+    MatPaginatorModule, 
+    MatTableModule, 
+    MatTabsModule, 
+    ReactiveFormsModule
+  ],
   templateUrl: './hotel-rooms.component.html',
   styleUrls: ['./hotel-rooms.component.css']
 })

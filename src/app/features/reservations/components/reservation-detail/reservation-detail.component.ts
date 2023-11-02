@@ -11,7 +11,15 @@ import { Guest, Reservation } from '../../models/reservations.models';
 @Component({
   selector: 'app-reservation-detail',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatDialogModule, MatTableModule],
+  imports: [
+    CommonModule, 
+    MatTabsModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatPaginatorModule, 
+    MatDialogModule, 
+    MatTableModule
+  ],
   templateUrl: './reservation-detail.component.html',
   styleUrls: ['./reservation-detail.component.css']
 })

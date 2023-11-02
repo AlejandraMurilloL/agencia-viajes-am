@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -18,8 +18,20 @@ import { CreateReservationComponent } from '../create-reservation/create-reserva
 @Component({
   selector: 'app-search-reservation',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatDatepickerModule,
-    MatNativeDateModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatCardModule, MatDialogModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    MatIconModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    MatButtonModule, 
+    MatTableModule, 
+    MatPaginatorModule, 
+    MatCardModule, 
+    MatDialogModule, 
+    ReactiveFormsModule
+  ],
   templateUrl: './search-reservation.component.html',
   styleUrls: ['./search-reservation.component.css']
 })

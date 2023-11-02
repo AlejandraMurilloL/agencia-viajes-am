@@ -1,22 +1,25 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatOptionModule } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Hotel } from '../../models/hotels.models';
 
 @Component({
   selector: 'app-hotel-detail',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTabsModule, MatTableModule, MatPaginatorModule, MatOptionModule, MatSelectModule, ReactiveFormsModule],
+  imports: [
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatTabsModule,  
+    ReactiveFormsModule
+  ],
   templateUrl: './hotel-detail.component.html',
   styleUrls: ['./hotel-detail.component.css']
 })

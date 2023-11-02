@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -8,7 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Guest, Reservation } from '../../models/reservations.models';
@@ -16,7 +15,19 @@ import { Guest, Reservation } from '../../models/reservations.models';
 @Component({
   selector: 'app-create-reservation',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatStepperModule, MatFormFieldModule, MatInputModule, FormsModule, MatTabsModule, MatIconModule, MatExpansionModule, MatPaginatorModule, MatTableModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    MatDialogModule, 
+    MatButtonModule,  
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatTabsModule, 
+    MatIconModule, 
+    MatExpansionModule, 
+    MatPaginatorModule, 
+    MatTableModule, 
+    ReactiveFormsModule
+  ],
   templateUrl: './create-reservation.component.html',
   styleUrls: ['./create-reservation.component.css']
 })
