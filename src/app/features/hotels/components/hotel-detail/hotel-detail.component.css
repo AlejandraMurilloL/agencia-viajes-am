@@ -2,16 +2,11 @@ mat-form-field {
     width: 100%;
 }
 
-.buttons-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .tab-content {
     margin-top: 20px;
 }
 
-.add-room-button {
+.buttons-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }

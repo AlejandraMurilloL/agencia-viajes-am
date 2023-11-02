@@ -4,26 +4,15 @@
     width: 100%;
 }
 
-.basic-info {
+.basic-info, .form-reservation {
     display: flex;
     flex-flow: row wrap;    
     justify-content: space-between;
     margin: 10px;
 }
 
-.basic-info > p {
-    width: 45%;
-}
-
-.form-reservation {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.form-field {
-    width: 45%;
+.tab-content {
+    margin-top: 20px;
 }
 
 mat-form-field {

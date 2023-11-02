@@ -3,8 +3,8 @@
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form">
-      <div class="form-room">
-        <mat-form-field class="example-form-field" appearance="outline">
+      <div class="search-form">
+        <mat-form-field appearance="outline">
           <mat-label>Fecha Reserva</mat-label>
           <mat-date-range-input 
             [rangePicker]="campaignOnePicker" 
@@ -37,7 +37,7 @@
     </form>    
   </mat-card-content>
   <mat-card-actions>
-      <div class="card-actions">
+      <div>
           <button mat-raised-button color="accent"[disabled]="form.invalid" (click)="onSearch()">
               <mat-icon>search</mat-icon>
               Buscar

@@ -2,7 +2,7 @@
 <div mat-dialog-content>
     <mat-tab-group>
       <mat-tab label="Datos Básicos">
-        <div class="basic-info tab-content">
+        <div class="tab-content">
           <form [formGroup]="form">
 
               <mat-form-field appearance="outline">
@@ -28,6 +28,7 @@
                   </textarea>
                   <mat-error>{{ checkForErrorsIn('Description') }}</mat-error>
               </mat-form-field> 
+              
           </form>          
         </div>        
       </mat-tab>

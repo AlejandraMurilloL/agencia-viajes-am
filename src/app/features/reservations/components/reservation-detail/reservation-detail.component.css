@@ -8,11 +8,11 @@
     width: 30%;
 }
 
-mat-tab-group {
-    margin-top: 20px;
-}
-
 .buttons-container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+}
+
+mat-tab-group {
+    margin-top: 20px;
 }
