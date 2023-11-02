@@ -2,40 +2,43 @@
   <mat-card-header>
   </mat-card-header>
   <mat-card-content>
-    <div class="form-room">
-      <div class="form-field">
+    <form [formGroup]="form">
+      <div class="form-room">
         <mat-form-field class="example-form-field" appearance="outline">
           <mat-label>Fecha Reserva</mat-label>
-          <mat-date-range-input [rangePicker]="campaignOnePicker" [comparisonStart]="search.StartDate"
+          <mat-date-range-input 
+            [rangePicker]="campaignOnePicker" 
+            [comparisonStart]="search.StartDate"
             [comparisonEnd]="search.EndDate">
-            <input matStartDate placeholder="Start date" [(ngModel)]="search.StartDate">
-            <input matEndDate placeholder="End date" [(ngModel)]="search.EndDate">
+            <input matStartDate placeholder="Start date" formControlName="StartDate">
+            <input matEndDate placeholder="End date" formControlName="EndDate">
           </mat-date-range-input>
           <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
           <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+          <mat-error>{{ checkForErrorsIn('StartDate') }}</mat-error>
+          <mat-error>{{ checkForErrorsIn('EndDate') }}</mat-error>
         </mat-form-field>
-      </div>
-      <div class="form-field">
+
         <mat-form-field appearance="outline">
           <mat-label>Cantidad de personas</mat-label>
-          <input type="number" matInput placeholder="Ingrese la cantidad de personas" [(ngModel)]="search.PeopleCount"
-            required>
+          <input type="number" matInput placeholder="Ingrese la cantidad de personas" formControlName="PeopleCount">
+          <mat-error>{{ checkForErrorsIn('PeopleCount') }}</mat-error>
           <mat-icon matSuffix>people</mat-icon>
         </mat-form-field>
-      </div>
-      <div class="form-field">
+
         <mat-form-field appearance="outline">
           <mat-label>Ciudad</mat-label>
-          <input matInput placeholder="Ingrese la ciudad de destino" [(ngModel)]="search.City" required>
+          <input matInput placeholder="Ingrese la ciudad de destino" formControlName="City">
+          <mat-error>{{ checkForErrorsIn('City') }}</mat-error>
           <mat-icon matSuffix>place</mat-icon>
         </mat-form-field>
       </div>
-    </div>
+    </form>    
   </mat-card-content>
   <mat-card-actions>
       <div class="card-actions">
-          <button mat-raised-button color="accent" (click)="onSearch()">
+          <button mat-raised-button color="accent"[disabled]="form.invalid" (click)="onSearch()">
               <mat-icon>search</mat-icon>
               Buscar
           </button>

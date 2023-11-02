@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -19,11 +19,12 @@ import { CreateReservationComponent } from '../create-reservation/create-reserva
   selector: 'app-search-reservation',
   standalone: true,
   imports: [CommonModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatDatepickerModule,
-    MatNativeDateModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatCardModule, MatDialogModule],
+    MatNativeDateModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatCardModule, MatDialogModule, ReactiveFormsModule],
   templateUrl: './search-reservation.component.html',
   styleUrls: ['./search-reservation.component.css']
 })
-export class SearchReservationComponent {
+export class SearchReservationComponent implements OnInit {
+  form!: FormGroup;
   search: SearchReservation = {
     StartDate: new Date,
     EndDate: new Date,
@@ -36,9 +37,19 @@ export class SearchReservationComponent {
   dataSource: MatTableDataSource<SearchReservationResult> = new MatTableDataSource();
 
   constructor(
+    private formBuilder: FormBuilder,
     private reservationService: ReservationsService,
     public dialog: MatDialog) {
     
+  }
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      StartDate   : ['', Validators.required],
+      EndDate     : ['', Validators.required],
+      PeopleCount : ['', Validators.required],
+      City        : ['', Validators.required]
+    })
   }
 
   onSearch() {
@@ -47,7 +58,6 @@ export class SearchReservationComponent {
   }
 
   openDialog(search: SearchReservationResult) {
-    console.log(search);
     const dialogRef = this.dialog.open(CreateReservationComponent, {
       width: '800px',
       data: { search: { ...search } }
@@ -57,6 +67,18 @@ export class SearchReservationComponent {
       if(result) {
       }      
     });
+  }
+
+  checkForErrorsIn(formControlName: string): string {
+    if (!this.form.get(formControlName)?.touched || 
+        !this.form.get(formControlName)?.invalid) 
+        return '';
+
+    if (this.form.get(formControlName)?.errors?.['required']) {
+      return 'El campo es obligatorio.'
+    }
+
+    return '';
   }
 
   private _loadAvailableRooms() {

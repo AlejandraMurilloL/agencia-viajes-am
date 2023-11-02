@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -18,11 +18,13 @@ import { Hotel, Room, RoomType } from '../../models/hotels.models';
 @Component({
   selector: 'app-hotel-rooms',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatOptionModule, FormsModule, MatDialogModule, MatExpansionModule, MatIconModule, MatInputModule, MatButtonModule, MatSlideToggleModule, MatPaginatorModule, MatTableModule, MatTabsModule],
+  imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatDialogModule, MatExpansionModule, MatIconModule, MatInputModule, MatButtonModule, MatSlideToggleModule, MatPaginatorModule, MatTableModule, MatTabsModule, ReactiveFormsModule],
   templateUrl: './hotel-rooms.component.html',
   styleUrls: ['./hotel-rooms.component.css']
 })
 export class HotelRoomsComponent implements OnInit {
+
+  form!: FormGroup;
   hotel!: Hotel;
   room: Room = {
     Id: '',
@@ -53,6 +55,7 @@ export class HotelRoomsComponent implements OnInit {
   dataSource: MatTableDataSource<Room> = new MatTableDataSource();
 
   constructor(
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<HotelRoomsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -63,14 +66,35 @@ export class HotelRoomsComponent implements OnInit {
       this.hotel = this.data.hotel;
       this.dataSource = new MatTableDataSource(this.hotel.Rooms);
     }
+
+    this.form = this.formBuilder.group({
+      Id         : [this.room.Id],
+      Name       : [this.room.Name, Validators.required],
+      BaseCost   : [this.room.BaseCost, Validators.required],
+      Taxes      : [this.room.Taxes, Validators.required],
+      RoomType   : [this.room.RoomType ?? true],
+      RoomTypeId : [this.room.RoomTypeId ?? [], Validators.required],
+      Location   : [this.room.Location, Validators.required],
+      Active     : [this.room.Active ?? true]
+    });
   }
 
-  onAddRoom() {
-    console.log(this.room);
+  onAddRoom(room: Room) {
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  checkForErrorsIn(formControlName: string): string {
+    if (!this.form.get(formControlName)?.touched || 
+        !this.form.get(formControlName)?.invalid) 
+        return '';
+
+    if (this.form.get(formControlName)?.errors?.['required']) {
+      return 'El campo es obligatorio.'
+    }
+
+    return '';
+  }
 }

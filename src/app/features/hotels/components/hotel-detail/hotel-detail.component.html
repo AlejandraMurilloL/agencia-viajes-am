@@ -3,30 +3,32 @@
     <mat-tab-group>
       <mat-tab label="Datos Básicos">
         <div class="basic-info tab-content">
-          <p>
-            <mat-form-field appearance="outline">
-              <mat-label>Nombre</mat-label>
-              <input matInput placeholder="Ingrese el nombre" [(ngModel)]="hotel.Name" required>
-              <mat-icon matSuffix>business</mat-icon>
-            </mat-form-field>
-          </p>
-          <p>
+          <form [formGroup]="form">
+
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Ingrese el nombre" formControlName="Name" cdkFocusInitial>
+                <mat-icon matSuffix>business</mat-icon>
+                <mat-error>{{ checkForErrorsIn('Name') }}</mat-error>
+              </mat-form-field>
+            
               <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
-                <input matInput placeholder="Ingrese la ubicación" [(ngModel)]="hotel.City" required  >
+                <input matInput placeholder="Ingrese la ubicación" formControlName="City">
                 <mat-icon matSuffix>place</mat-icon>
+                <mat-error>{{ checkForErrorsIn('City') }}</mat-error>
               </mat-form-field>
-          </p>
-          <p>
+            
               <mat-form-field appearance="outline">
                   <mat-label>Descripción</mat-label>
                   <textarea matInput 
                     placeholder="Ingrese la descripción" 
-                    [(ngModel)]="hotel.Description"
+                    formControlName="Description"
                     rows="4">
                   </textarea>
+                  <mat-error>{{ checkForErrorsIn('Description') }}</mat-error>
               </mat-form-field> 
-          </p>
+          </form>          
         </div>        
       </mat-tab>
     </mat-tab-group>
@@ -34,5 +36,5 @@
 </div>
 <div mat-dialog-actions class="buttons-container">
   <button mat-raised-button (click)="onNoClick()">Cancelar</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="hotel" cdkFocusInitial>Guardar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="form.value" [disabled]="form.invalid">Guardar</button>
 </div>
