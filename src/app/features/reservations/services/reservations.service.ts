@@ -7,8 +7,6 @@ import { AvailableRooms, Reservation } from '../models/reservations.models';
 })
 export class ReservationsService {
 
-  constructor() { }
-
   getReservations() {
     const reservations: Reservation[] = this.reservations;
     return of(reservations);
@@ -17,6 +15,10 @@ export class ReservationsService {
   getAvailableRooms() {
     const available: AvailableRooms[] = this.availableRooms;
     return of(available);
+  }
+
+  confirmReservation(reservation: Reservation) {
+    this.reservations.push(reservation);
   }
 
   reservations: Reservation[] = [

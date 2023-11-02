@@ -44,7 +44,7 @@ export class SearchReservationComponent implements OnInit {
     City: ''
   }
 
-  showSearchResult: boolean = false;
+  showSearchResult = false;
   displayedColumns: string[] = ['Hotel', 'Room', 'StartDate', 'EndDate', 'Price', 'Actions'];
   dataSource: MatTableDataSource<AvailableRooms> = new MatTableDataSource();
 
@@ -77,6 +77,7 @@ export class SearchReservationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
+        this.reservationService.confirmReservation(result);
       }      
     });
   }
@@ -94,6 +95,8 @@ export class SearchReservationComponent implements OnInit {
   }
 
   private _loadAvailableRooms() {
-    this.reservationService.getAvailableRooms().subscribe(data => this.dataSource = new MatTableDataSource(data));
+    this.reservationService
+      .getAvailableRooms()
+      .subscribe(data => this.dataSource = new MatTableDataSource(data));
   }
 }

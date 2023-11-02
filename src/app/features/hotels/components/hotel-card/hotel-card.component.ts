@@ -23,7 +23,7 @@ import { HotelRoomsComponent } from '../hotel-rooms/hotel-rooms.component';
 })
 export class HotelCardComponent {
   @Input() hotel!: Hotel;
-  @Output() onHotelEdit = new EventEmitter<void>();
+  @Output() hotelEdited = new EventEmitter<void>();
 
   constructor(
     private hotelsService: HotelsService,
@@ -40,7 +40,7 @@ export class HotelCardComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.hotelsService.updateHotel(result);
-        this.onHotelEdit.emit();
+        this.hotelEdited.emit();
       }
     });
   }
@@ -53,7 +53,7 @@ export class HotelCardComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.onHotelEdit.emit();
+        this.hotelEdited.emit();
       }
     });
   }

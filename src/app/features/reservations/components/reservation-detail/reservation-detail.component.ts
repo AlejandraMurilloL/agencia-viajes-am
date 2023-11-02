@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,7 +23,7 @@ import { Guest, Reservation } from '../../models/reservations.models';
   templateUrl: './reservation-detail.component.html',
   styleUrls: ['./reservation-detail.component.css']
 })
-export class ReservationDetailComponent {
+export class ReservationDetailComponent implements OnInit {
 
   reservation: Reservation = {
     Hotel: '',
@@ -40,6 +40,7 @@ export class ReservationDetailComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ReservationDetailComponent>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
     

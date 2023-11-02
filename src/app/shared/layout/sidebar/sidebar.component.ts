@@ -1,12 +1,12 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,6 +14,7 @@ import { Router, RouterOutlet } from '@angular/router';
   imports: [
     CommonModule, 
     RouterOutlet, 
+    RouterModule,
     MatSidenavModule, 
     MatIconModule,
     MatToolbarModule, 
@@ -23,7 +24,7 @@ import { Router, RouterOutlet } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
   title = 'agencia-viajes';
@@ -31,8 +32,7 @@ export class SidebarComponent {
   isMobile= true;
 
   constructor(
-    private observer: BreakpointObserver, 
-    private router: Router
+    private observer: BreakpointObserver
     ) {}
 
   ngOnInit() {
@@ -53,9 +53,5 @@ export class SidebarComponent {
       this.sidenav.open();
       this.isCollapsed = !this.isCollapsed;
     }
-  }
-
-  navigateMenu(menu: string) {
-    this.router.navigate([menu])
   }
 }

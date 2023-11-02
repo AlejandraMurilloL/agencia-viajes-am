@@ -46,7 +46,7 @@ export class HotelsComponent {
     });
   }
 
-  onEditHotel() {
+  hotelEdited() {
     this._loadHotels();
   }
 

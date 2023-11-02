@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { Hotel } from '../models/hotels.models';
+import { Hotel, Room } from '../models/hotels.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelsService {
-
-  constructor() { }
 
   getHotels() {
     const hotels: Hotel[] = this.hotels;
@@ -20,6 +18,11 @@ export class HotelsService {
 
   updateHotel(hotel: Hotel) {    
     this.hotels = this.hotels.map(obj => obj.Id === hotel.Id ? { ...hotel } : obj);
+  }
+
+  addRoomToHotel(room: Room) {
+    const hotel = this.hotels.find(hotel => hotel.Id === room.HotelId);
+    hotel?.Rooms.push(room);
   }
 
   hotels: Hotel[] = [ 
