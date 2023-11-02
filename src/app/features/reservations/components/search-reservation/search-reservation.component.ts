@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { SearchReservation, SearchReservationResult } from '../../models/reservations.models';
+import { AvailableRooms, SearchAvailableRooms } from '../../models/reservations.models';
 import { ReservationsService } from '../../services/reservations.service';
 import { CreateReservationComponent } from '../create-reservation/create-reservation.component';
 
@@ -37,7 +37,7 @@ import { CreateReservationComponent } from '../create-reservation/create-reserva
 })
 export class SearchReservationComponent implements OnInit {
   form!: FormGroup;
-  search: SearchReservation = {
+  search: SearchAvailableRooms = {
     StartDate: new Date,
     EndDate: new Date,
     PeopleCount: 0,
@@ -46,7 +46,7 @@ export class SearchReservationComponent implements OnInit {
 
   showSearchResult: boolean = false;
   displayedColumns: string[] = ['Hotel', 'Room', 'StartDate', 'EndDate', 'Price', 'Actions'];
-  dataSource: MatTableDataSource<SearchReservationResult> = new MatTableDataSource();
+  dataSource: MatTableDataSource<AvailableRooms> = new MatTableDataSource();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,10 +69,10 @@ export class SearchReservationComponent implements OnInit {
     this._loadAvailableRooms();
   }
 
-  openDialog(search: SearchReservationResult) {
+  openConfirmReservation(available: AvailableRooms) {
     const dialogRef = this.dialog.open(CreateReservationComponent, {
       width: '800px',
-      data: { search: { ...search } }
+      data: { availableRoom: { ...available } }
     });
 
     dialogRef.afterClosed().subscribe(result => {

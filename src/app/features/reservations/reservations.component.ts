@@ -38,7 +38,7 @@ export class ReservationsComponent implements OnInit {
     this._loadReservations();
   }
 
-  openDialog(reservation: Reservation) {
+  openReservationDetail(reservation: Reservation) {
     const dialogRef = this.dialog.open(ReservationDetailComponent, {
       width: '1100px',
       data: { Reservation: {...reservation} }

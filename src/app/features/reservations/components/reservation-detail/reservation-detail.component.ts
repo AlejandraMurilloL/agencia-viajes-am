@@ -34,6 +34,7 @@ export class ReservationDetailComponent {
     ContactPhone: '',
     Guests: []
   };
+
   displayedColumns: string[] = ['FirstName', 'LastName', 'Birthday', 'Gender', 'DocumentType', 'DocumentNumber', 'Email', 'ContactPhone'];
   dataSource: MatTableDataSource<Guest> = new MatTableDataSource();
 

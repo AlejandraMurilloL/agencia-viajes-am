@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import { MatAccordion } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Hotel } from '../../models/hotels.models';
@@ -23,7 +22,6 @@ import { HotelRoomsComponent } from '../hotel-rooms/hotel-rooms.component';
   styleUrls: ['./hotel-card.component.css']
 })
 export class HotelCardComponent {
-  @ViewChild(MatAccordion) accordion!: MatAccordion;
   @Input() hotel!: Hotel;
   @Output() onHotelEdit = new EventEmitter<void>();
 
@@ -33,7 +31,7 @@ export class HotelCardComponent {
     
   }
 
-  openHotelDialog() {
+  openHotelDetail() {
     const dialogRef = this.dialog.open(HotelDetailComponent, {
       width: '400px',
       data: { hotel: { ...this.hotel } }
@@ -47,7 +45,7 @@ export class HotelCardComponent {
     });
   }
 
-  openRoomsDialog() {
+  openHotelRooms() {
     const dialogRef = this.dialog.open(HotelRoomsComponent, {
       width: '1000px',
       data: { hotel: { ...this.hotel } }

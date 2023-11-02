@@ -31,7 +31,7 @@ export class HotelsComponent {
     this._loadHotels();
   }
 
-  openDialog() {
+  openHotelDetail() {
     const dialogRef = this.dialog.open(HotelDetailComponent, {
       width: '400px',
       data: {}

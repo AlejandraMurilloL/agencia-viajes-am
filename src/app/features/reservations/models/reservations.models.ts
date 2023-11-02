@@ -19,14 +19,14 @@ export interface Guest {
     ContactPhone: string;
 }
 
-export interface SearchReservation {
+export interface SearchAvailableRooms {
     StartDate: Date;
     EndDate: Date;
     PeopleCount: number;
     City: string;
 }
 
-export interface SearchReservationResult {
+export interface AvailableRooms {
     StartDate: Date;
     EndDate: Date;
     Hotel: string;

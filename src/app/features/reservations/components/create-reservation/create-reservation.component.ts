@@ -67,7 +67,7 @@ export class CreateReservationComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-    if (this.data.search) {
+    if (this.data.availableRoom) {
       const { StartDate, EndDate, Hotel, Room } = this.data.search;
       this.reservation.Hotel = Hotel;
       this.reservation.Room = Room;
@@ -76,24 +76,24 @@ export class CreateReservationComponent implements OnInit {
     }
 
     this.form = this.formBuilder.group({
-      Hotel: [{ value: this.reservation.Hotel, disabled: true }, Validators.required],
-      Room: [{ value: this.reservation.Room, disabled: true }, Validators.required],
-      StartDate: [{ value: this.reservation.StartDate, disabled: true }, Validators.required],
-      EndDate: [{ value: this.reservation.EndDate, disabled: true }, Validators.required],
-      ContactName: ['', Validators.required],
+      Hotel       : [{ value: this.reservation.Hotel, disabled: true }, Validators.required],
+      Room        : [{ value: this.reservation.Room, disabled: true }, Validators.required],
+      StartDate   : [{ value: this.reservation.StartDate, disabled: true }, Validators.required],
+      EndDate     : [{ value: this.reservation.EndDate, disabled: true }, Validators.required],
+      ContactName : ['', Validators.required],
       ContactPhone: ['', Validators.required],
-      Guests: [[]]
+      Guests      : [[]]
     });
 
     this.guestForm = this.formBuilder.group({
-      FirstName: ['', Validators.required],
-      LastName: ['', Validators.required],
-      Birthday: ['', Validators.required],
-      DocumentType: ['', Validators.required],
+      FirstName     : ['', Validators.required],
+      LastName      : ['', Validators.required],
+      Birthday      : ['', Validators.required],
+      DocumentType  : ['', Validators.required],
       DocumentNumber: ['', Validators.required],
-      Gender: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
-      ContactPhone: ['']
+      Gender        : ['', Validators.required],
+      Email         : ['', [Validators.required, Validators.email]],
+      ContactPhone  : ['']
     });
 
   }
