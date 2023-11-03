@@ -7,110 +7,14 @@
           Agregar Habitación
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <form [formGroup]="form">
-        <div class="form-room">
-          
-          <mat-form-field appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Ingrese el nombre" formControlName="Name">
-            <mat-icon matSuffix>business</mat-icon>
-            <mat-error>{{ checkForErrorsIn('Name') }}</mat-error>
-          </mat-form-field>
-          
-          <mat-form-field appearance="outline">
-            <mat-label>Costo Base</mat-label>
-            <input type="number" matInput placeholder="Ingrese el costo base" formControlName="BaseCost">
-            <mat-error>{{ checkForErrorsIn('BaseCost') }}</mat-error>
-            <mat-icon matSuffix>attach_money</mat-icon>
-          </mat-form-field>
-        
-          <mat-form-field appearance="outline">
-            <mat-label>Impuestos</mat-label>
-            <input type="number" matInput placeholder="Ingrese el valor de los impuestos" formControlName="Taxes">
-            <mat-error>{{ checkForErrorsIn('Taxes') }}</mat-error>
-            <mat-icon matSuffix>attach_money</mat-icon>
-          </mat-form-field>
-        
-          <mat-form-field appearance="outline">
-            <mat-label>Tipo de Habitación</mat-label>
-            <mat-select formControlName="RoomTypeId">
-              <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.Id">{{ roomType.Name }}</mat-option>
-            </mat-select>
-            <mat-error>{{ checkForErrorsIn('RoomTypeId') }}</mat-error>
-          </mat-form-field>
-        
-          <mat-form-field appearance="outline">
-            <mat-label>Ubicación</mat-label>
-            <input matInput placeholder="Ingrese la ubicación" formControlName="Location">
-            <mat-error>{{ checkForErrorsIn('Location') }}</mat-error>
-            <mat-icon matSuffix>place</mat-icon>
-          </mat-form-field>
-          
-          <div>
-            <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="onAddRoom(form.value)">Agregar</button>
-          </div>
-        </div>
-      </form>      
+      <app-hotel-rooms-detail [hotel]="hotel" (addRoom)="onAddRoom($event)"/>
     </mat-expansion-panel>
   </mat-accordion>
 
 
   <mat-tab-group>
     <mat-tab label="Listado de habitaciones">
-
-      <div class="rooms-list">
-        <table mat-table *ngIf="dataSource" [dataSource]="dataSource">
-
-          <ng-container matColumnDef="Name">
-            <th mat-header-cell *matHeaderCellDef> Nombre</th>
-            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="BaseCost">
-            <th mat-header-cell *matHeaderCellDef> Costo Base </th>
-            <td mat-cell *matCellDef="let element"> {{ element.BaseCost | currency }} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="Taxes">
-            <th mat-header-cell *matHeaderCellDef> Impuestos </th>
-            <td mat-cell *matCellDef="let element"> {{ element.Taxes | currency }} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="RoomType">
-            <th mat-header-cell *matHeaderCellDef> Tipo de Habitación </th>
-            <td mat-cell *matCellDef="let element"> {{ element.RoomType }} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="Location">
-            <th mat-header-cell *matHeaderCellDef> Ubicación </th>
-            <td mat-cell *matCellDef="let element"> {{ element.Location }} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="Active">
-            <th mat-header-cell *matHeaderCellDef> Activa </th>
-            <td mat-cell *matCellDef="let element">
-              <mat-slide-toggle class="slide" color="accent" [checked]="element.Active" [disabled]="false">
-              </mat-slide-toggle>
-            </td>
-          </ng-container>
-
-          <<ng-container matColumnDef="Actions">
-            <th mat-header-cell *matHeaderCellDef> Acciones </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="warn">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-            </ng-container>
-
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="hotel.Rooms.length > 5">
-        </mat-paginator>
-      </div>
+      <app-hotel-rooms-list [rooms]="hotel.Rooms" />      
     </mat-tab>
   </mat-tab-group>
 

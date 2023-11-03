@@ -1,20 +1,9 @@
-.buttons-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-}
-
-.basic-info, .form-reservation {
-    display: flex;
-    flex-flow: row wrap;    
-    justify-content: space-between;
-    margin: 10px;
-}
-
 .tab-content {
     margin-top: 20px;
 }
 
-mat-form-field {
-    width: 45%;
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }

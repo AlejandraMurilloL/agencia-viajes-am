@@ -1,0 +1,44 @@
+<form [formGroup]="form">
+    <div class="form-room">
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Ingrese el nombre" formControlName="Name">
+        <mat-icon matSuffix>business</mat-icon>
+        <mat-error>{{ checkForErrorsIn('Name') }}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Costo Base</mat-label>
+        <input type="number" matInput placeholder="Ingrese el costo base" formControlName="BaseCost">
+        <mat-error>{{ checkForErrorsIn('BaseCost') }}</mat-error>
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Impuestos</mat-label>
+        <input type="number" matInput placeholder="Ingrese el valor de los impuestos" formControlName="Taxes">
+        <mat-error>{{ checkForErrorsIn('Taxes') }}</mat-error>
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de Habitación</mat-label>
+        <mat-select formControlName="RoomTypeId">
+          <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.Id">{{ roomType.Name }}</mat-option>
+        </mat-select>
+        <mat-error>{{ checkForErrorsIn('RoomTypeId') }}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Ubicación</mat-label>
+        <input matInput placeholder="Ingrese la ubicación" formControlName="Location">
+        <mat-error>{{ checkForErrorsIn('Location') }}</mat-error>
+        <mat-icon matSuffix>place</mat-icon>
+      </mat-form-field>
+      
+      <div>
+        <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="addRoomEmit(form.value)">Agregar</button>
+      </div>
+    </div>
+  </form>      

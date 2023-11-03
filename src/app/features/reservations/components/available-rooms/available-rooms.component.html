@@ -1,0 +1,6 @@
+<app-available-rooms-filter (doSearch)="doSearch()"/>
+
+
+<div class="mat-elevation-z4 reservations-list" *ngIf="showSearchResult">
+  <app-available-rooms-list [availableRooms]="availableRooms" (openConfirmReservation)="openConfirmReservation($event)"/>
+</div>
