@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+    <div class="basic-info">              
+      <mat-form-field appearance="outline">
+          <mat-label>Hotel</mat-label>
+          <input matInput placeholder="Ingrese el nombre" formControlName="Hotel">
+          <mat-icon matSuffix>business</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+          <mat-label>Habitación</mat-label>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="Room">
+          <mat-icon matSuffix>hotel</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" [ariaReadOnly]="true">
+          <mat-label>Fecha de llegada</mat-label>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="StartDate">
+          <mat-icon matSuffix>calendar_today</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+          <mat-label>Fecha de salida</mat-label>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="EndDate">
+          <mat-icon matSuffix>calendar_today</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+          <mat-label>Contacto de emergencia</mat-label>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="ContactName">
+          <mat-error>{{ checkForErrorsIn('ContactName') }}</mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+          <mat-label>Nro. Contacto</mat-label>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="ContactPhone">
+          <mat-error>{{ checkForErrorsIn('ContactPhone') }}</mat-error>
+          <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>      
+      
+      <div class="buttons-container">
+        <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="passToGuestsStep()">Siguiente</button>
+      </div>
+    </div>
+  </form>

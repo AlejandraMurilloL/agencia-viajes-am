@@ -1,0 +1,16 @@
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.form-guest {
+    display: flex;
+    flex-flow: row wrap;    
+    justify-content: space-between;
+    margin: 10px;
+}
+
+mat-form-field {
+    width: 45%;
+}
