@@ -1,0 +1,15 @@
+mat-form-field {
+    width: 45%;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-room {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
