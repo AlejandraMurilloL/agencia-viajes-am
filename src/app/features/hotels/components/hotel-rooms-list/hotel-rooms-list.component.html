@@ -3,33 +3,33 @@
 
       <ng-container matColumnDef="Name">
         <th mat-header-cell *matHeaderCellDef> Nombre</th>
-        <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="BaseCost">
         <th mat-header-cell *matHeaderCellDef> Costo Base </th>
-        <td mat-cell *matCellDef="let element"> {{ element.BaseCost | currency }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.baseCost | currency }} </td>
       </ng-container>
 
       <ng-container matColumnDef="Taxes">
         <th mat-header-cell *matHeaderCellDef> Impuestos </th>
-        <td mat-cell *matCellDef="let element"> {{ element.Taxes | currency }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.taxes | currency }} </td>
       </ng-container>
 
       <ng-container matColumnDef="RoomType">
         <th mat-header-cell *matHeaderCellDef> Tipo de Habitación </th>
-        <td mat-cell *matCellDef="let element"> {{ element.RoomType }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.roomType }} </td>
       </ng-container>
 
       <ng-container matColumnDef="Location">
         <th mat-header-cell *matHeaderCellDef> Ubicación </th>
-        <td mat-cell *matCellDef="let element"> {{ element.Location }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.location }} </td>
       </ng-container>
 
       <ng-container matColumnDef="Active">
         <th mat-header-cell *matHeaderCellDef> Activa </th>
         <td mat-cell *matCellDef="let element">
-          <mat-slide-toggle class="slide" color="accent" [checked]="element.Active" [disabled]="false">
+          <mat-slide-toggle class="slide" color="accent" [checked]="element.active" [disabled]="false">
           </mat-slide-toggle>
         </td>
       </ng-container>

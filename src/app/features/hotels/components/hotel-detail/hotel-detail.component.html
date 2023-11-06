@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{ hotel.Id ? 'Información del Hotel' : 'Nuevo Hotel'}}</h1>
+<h1 mat-dialog-title>{{ hotel.id ? 'Información del Hotel' : 'Nuevo Hotel'}}</h1>
 <div mat-dialog-content>
     <mat-tab-group>
       <mat-tab label="Datos Básicos">
@@ -7,26 +7,26 @@
 
               <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
-                <input matInput placeholder="Ingrese el nombre" formControlName="Name" cdkFocusInitial>
+                <input matInput placeholder="Ingrese el nombre" formControlName="name" cdkFocusInitial>
                 <mat-icon matSuffix>business</mat-icon>
-                <mat-error>{{ checkForErrorsIn('Name') }}</mat-error>
+                <mat-error>{{ checkForErrorsIn('name') }}</mat-error>
               </mat-form-field>
             
               <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
-                <input matInput placeholder="Ingrese la ubicación" formControlName="City">
+                <input matInput placeholder="Ingrese la ubicación" formControlName="city">
                 <mat-icon matSuffix>place</mat-icon>
-                <mat-error>{{ checkForErrorsIn('City') }}</mat-error>
+                <mat-error>{{ checkForErrorsIn('city') }}</mat-error>
               </mat-form-field>
             
               <mat-form-field appearance="outline">
                   <mat-label>Descripción</mat-label>
                   <textarea matInput 
                     placeholder="Ingrese la descripción" 
-                    formControlName="Description"
+                    formControlName="description"
                     rows="4">
                   </textarea>
-                  <mat-error>{{ checkForErrorsIn('Description') }}</mat-error>
+                  <mat-error>{{ checkForErrorsIn('description') }}</mat-error>
               </mat-form-field> 
               
           </form>          

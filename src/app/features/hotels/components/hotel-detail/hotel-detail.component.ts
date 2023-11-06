@@ -27,12 +27,12 @@ export class HotelDetailComponent implements OnInit  {
 
   form!: FormGroup;
   hotel: Hotel = {
-    Id: '',
-    Name: '',
-    Description: '',
-    City: '',
-    Active: true,
-    Rooms: []
+    id: '',
+    name: '',
+    description: '',
+    city: '',
+    active: true,
+    rooms: []
   };
 
   constructor(
@@ -49,12 +49,12 @@ export class HotelDetailComponent implements OnInit  {
     }
 
     this.form = this.formBuilder.group({
-      Name        : [this.hotel.Name, Validators.required],
-      City        : [this.hotel.City, Validators.required],
-      Description : [this.hotel.Description],
-      Id          : [this.hotel.Id],
-      Active      : [this.hotel.Active ?? true],
-      Rooms       : [this.hotel.Rooms ?? []]
+      name        : [this.hotel.name, Validators.required],
+      city        : [this.hotel.city, Validators.required],
+      description : [this.hotel.description],
+      id          : [this.hotel.id],
+      active      : [this.hotel.active ?? true],
+      rooms       : [this.hotel.rooms ?? []]
     });
   }
 

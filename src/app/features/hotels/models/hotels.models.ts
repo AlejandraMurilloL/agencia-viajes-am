@@ -1,25 +1,25 @@
 export interface Hotel {
-    Id: string;
-    Name: string;
-    Description: string;
-    City: string;
-    Active: boolean;
-    Rooms: Room[];
+    id: string;
+    name: string;
+    description: string;
+    city: string;
+    active: boolean;
+    rooms: Room[];
 }
 
 export interface Room {
-    Id: string;
-    Name: string;
-    HotelId?: string;
-	BaseCost: number;
-	Taxes: number;
-	RoomType: string;
-	RoomTypeId: string;
-	Location: string;
-	Active: boolean;
+    id: string;
+    name: string;
+    hotelId?: string;
+	baseCost: number;
+	taxes: number;
+	roomType: string;
+	roomTypeId: string;
+	location: string;
+	active: boolean;
 }
 
 export interface RoomType {
-	Id: string,
-	Name: string;
+	id: string,
+	name: string;
 }

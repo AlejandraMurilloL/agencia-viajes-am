@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z4 card">
     <mat-card-header>
-        <mat-card-title>{{ hotel.Name }}</mat-card-title>
-        <mat-slide-toggle class="slide" color="accent" [checked]="hotel.Active" [disabled]="false">
+        <mat-card-title>{{ hotel.name }}</mat-card-title>
+        <mat-slide-toggle class="slide" color="accent" [checked]="hotel.active" [disabled]="false">
         </mat-slide-toggle>
     </mat-card-header>
     <img 
@@ -10,10 +10,10 @@
         src="https://res.cloudinary.com/simpleview/image/upload/v1654733490/clients/orlandofl/5900_pool_b92df465-0c67-4161-b8bb-67f9fc301094.jpg" />
     <mat-card-content>
         <div class="place-room-number">
-            <p>{{ hotel.City }}</p>
-            <i class="fa fa-bed">{{ hotel.Rooms.length }}</i>
+            <p>{{ hotel.city }}</p>
+            <i class="fa fa-bed">{{ hotel.rooms.length }}</i>
         </div>
-        <p>{{ hotel.Description }}</p>
+        <p>{{ hotel.description }}</p>
     </mat-card-content>
     <mat-card-actions>
         <div class="card-actions">

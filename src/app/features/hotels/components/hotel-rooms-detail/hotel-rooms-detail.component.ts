@@ -33,16 +33,16 @@ export class HotelRoomsDetailComponent implements OnInit {
   
   roomTypes: RoomType[] = [
     {
-      Id: '001',
-      Name: 'Doble'
+      id: '001',
+      name: 'Doble'
     },
     {
-      Id: '002',
-      Name: 'Familiar'
+      id: '002',
+      name: 'Familiar'
     },
     {
-      Id: '003',
-      Name: 'Suite'
+      id: '003',
+      name: 'Suite'
     },
   ];
 
@@ -52,15 +52,15 @@ export class HotelRoomsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      Id         : [''],
-      Name       : ['', Validators.required],
-      BaseCost   : ['', Validators.required],
-      Taxes      : ['', Validators.required],
-      RoomType   : [''],
-      RoomTypeId : ['', Validators.required],
-      Location   : ['', Validators.required],
-      Active     : [true],
-      HotelId    : [this.hotel.Id]
+      id         : [''],
+      name       : ['', Validators.required],
+      baseCost   : ['', Validators.required],
+      taxes      : ['', Validators.required],
+      roomType   : [''],
+      roomTypeId : ['', Validators.required],
+      location   : ['', Validators.required],
+      active     : [true],
+      hotelId    : [this.hotel.id]
     });
   }
   

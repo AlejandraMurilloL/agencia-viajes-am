@@ -3,37 +3,37 @@
       
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Ingrese el nombre" formControlName="Name">
+        <input matInput placeholder="Ingrese el nombre" formControlName="name">
         <mat-icon matSuffix>business</mat-icon>
-        <mat-error>{{ checkForErrorsIn('Name') }}</mat-error>
+        <mat-error>{{ checkForErrorsIn('name') }}</mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline">
         <mat-label>Costo Base</mat-label>
-        <input type="number" matInput placeholder="Ingrese el costo base" formControlName="BaseCost">
-        <mat-error>{{ checkForErrorsIn('BaseCost') }}</mat-error>
+        <input type="number" matInput placeholder="Ingrese el costo base" formControlName="baseCost">
+        <mat-error>{{ checkForErrorsIn('baseCost') }}</mat-error>
         <mat-icon matSuffix>attach_money</mat-icon>
       </mat-form-field>
     
       <mat-form-field appearance="outline">
         <mat-label>Impuestos</mat-label>
-        <input type="number" matInput placeholder="Ingrese el valor de los impuestos" formControlName="Taxes">
-        <mat-error>{{ checkForErrorsIn('Taxes') }}</mat-error>
+        <input type="number" matInput placeholder="Ingrese el valor de los impuestos" formControlName="taxes">
+        <mat-error>{{ checkForErrorsIn('taxes') }}</mat-error>
         <mat-icon matSuffix>attach_money</mat-icon>
       </mat-form-field>
     
       <mat-form-field appearance="outline">
         <mat-label>Tipo de Habitación</mat-label>
-        <mat-select formControlName="RoomTypeId">
-          <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.Id">{{ roomType.Name }}</mat-option>
+        <mat-select formControlName="roomTypeId">
+          <mat-option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{ roomType.name }}</mat-option>
         </mat-select>
-        <mat-error>{{ checkForErrorsIn('RoomTypeId') }}</mat-error>
+        <mat-error>{{ checkForErrorsIn('roomTypeId') }}</mat-error>
       </mat-form-field>
     
       <mat-form-field appearance="outline">
         <mat-label>Ubicación</mat-label>
-        <input matInput placeholder="Ingrese la ubicación" formControlName="Location">
-        <mat-error>{{ checkForErrorsIn('Location') }}</mat-error>
+        <input matInput placeholder="Ingrese la ubicación" formControlName="location">
+        <mat-error>{{ checkForErrorsIn('location') }}</mat-error>
         <mat-icon matSuffix>place</mat-icon>
       </mat-form-field>
       

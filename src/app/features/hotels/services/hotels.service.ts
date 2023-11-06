@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { Hotel, Room } from '../models/hotels.models';
 
 @Injectable({
@@ -7,58 +8,63 @@ import { Hotel, Room } from '../models/hotels.models';
 })
 export class HotelsService {
 
+  urlApi = environment.baseUrlApi;
+  
+  constructor(private http: HttpClient) {
+
+  }
+
   getHotels() {
-    const hotels: Hotel[] = this.hotels;
-    return of(hotels);
+    return this.http.get<Hotel[]>(`${this.urlApi}hotels`);
   }
 
   createHotel(hotel: Hotel) {
-    this.hotels.push(hotel);
+    return this.http.post(`${this.urlApi}hotels`, hotel);
   }
 
   updateHotel(hotel: Hotel) {    
-    this.hotels = this.hotels.map(obj => obj.Id === hotel.Id ? { ...hotel } : obj);
+    this.hotels = this.hotels.map(obj => obj.id === hotel.id ? { ...hotel } : obj);
   }
 
   addRoomToHotel(room: Room) {
-    const hotel = this.hotels.find(hotel => hotel.Id === room.HotelId);
-    hotel?.Rooms.push(room);
+    const hotel = this.hotels.find(hotel => hotel.id === room.hotelId);
+    hotel?.rooms.push(room);
   }
 
   hotels: Hotel[] = [ 
     {
-      Id: '001',
-      Name: 'Hotel Gales',
-      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
-      City: 'Sogamoso, Boyacá',
-      Active: true,
-      Rooms: [{
-        Id: '001',
-        BaseCost: 80000,
-        Taxes: 0,
-        Active: true,
-        Name: '201',
-        RoomTypeId: '001',
-        Location: 'Piso 2',
-        HotelId: '001',
-        RoomType: ''
+      id: '001',
+      name: 'Hotel Gales',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
+      city: 'Sogamoso, Boyacá',
+      active: true,
+      rooms: [{
+        id: '001',
+        baseCost: 80000,
+        taxes: 0,
+        active: true,
+        name: '201',
+        roomTypeId: '001',
+        location: 'Piso 2',
+        hotelId: '001',
+        roomType: ''
       }]
     },
     {
-      Id: '002',
-      Name: 'Hotel Panorama',
-      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
-      City: 'Paipa, Boyacá',
-      Active: false,
-      Rooms: []
+      id: '002',
+      name: 'Hotel Panorama',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
+      city: 'Paipa, Boyacá',
+      active: false,
+      rooms: []
     },
     {
-      Id: '003',
-      Name: 'Hotel Zuhe',
-      Description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
-      City: 'Paipa, Boyacá',
-      Active: true,
-      Rooms: []
+      id: '003',
+      name: 'Hotel Zuhe',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic neque amet.',
+      city: 'Paipa, Boyacá',
+      active: true,
+      rooms: []
     },
   ];
 }

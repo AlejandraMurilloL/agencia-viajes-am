@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{ hotel.Name }}</h1>
+<h1 mat-dialog-title>{{ hotel.name }}</h1>
 <div mat-dialog-content>
   <mat-accordion multi>
     <mat-expansion-panel>
@@ -14,7 +14,7 @@
 
   <mat-tab-group>
     <mat-tab label="Listado de habitaciones">
-      <app-hotel-rooms-list [rooms]="hotel.Rooms" />      
+      <app-hotel-rooms-list [rooms]="hotel.rooms" />      
     </mat-tab>
   </mat-tab-group>
 

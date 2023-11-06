@@ -39,9 +39,8 @@ export class HotelsComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        result.Id = crypto.randomUUID();
-        this.hotelsService.createHotel(result);
-        this._loadHotels();
+        this.hotelsService.createHotel(result)
+        .subscribe(() => this._loadHotels());
       }      
     });
   }
