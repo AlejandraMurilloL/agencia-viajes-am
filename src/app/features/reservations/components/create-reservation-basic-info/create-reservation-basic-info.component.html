@@ -2,39 +2,39 @@
     <div class="basic-info">              
       <mat-form-field appearance="outline">
           <mat-label>Hotel</mat-label>
-          <input matInput placeholder="Ingrese el nombre" formControlName="Hotel">
+          <input matInput placeholder="Ingrese el nombre" formControlName="hotelName">
           <mat-icon matSuffix>business</mat-icon>
       </mat-form-field>
   
       <mat-form-field appearance="outline">
           <mat-label>Habitación</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" formControlName="Room">
+          <input matInput placeholder="Ingrese la ubicación" formControlName="roomName">
           <mat-icon matSuffix>hotel</mat-icon>
       </mat-form-field>
   
       <mat-form-field appearance="outline" [ariaReadOnly]="true">
           <mat-label>Fecha de llegada</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" formControlName="StartDate">
+          <input matInput placeholder="Ingrese la ubicación" formControlName="startDate">
           <mat-icon matSuffix>calendar_today</mat-icon>
       </mat-form-field>
   
       <mat-form-field appearance="outline">
           <mat-label>Fecha de salida</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" formControlName="EndDate">
+          <input matInput placeholder="Ingrese la ubicación" formControlName="endDate">
           <mat-icon matSuffix>calendar_today</mat-icon>
       </mat-form-field>
   
       <mat-form-field appearance="outline">
           <mat-label>Contacto de emergencia</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" formControlName="ContactName">
-          <mat-error>{{ checkForErrorsIn('ContactName') }}</mat-error>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="contactName">
+          <mat-error>{{ checkForErrorsIn('contactName') }}</mat-error>
           <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
   
       <mat-form-field appearance="outline">
           <mat-label>Nro. Contacto</mat-label>
-          <input matInput placeholder="Ingrese la ubicación" formControlName="ContactPhone">
-          <mat-error>{{ checkForErrorsIn('ContactPhone') }}</mat-error>
+          <input matInput placeholder="Ingrese la ubicación" formControlName="contactPhone">
+          <mat-error>{{ checkForErrorsIn('contactPhone') }}</mat-error>
           <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>      
       

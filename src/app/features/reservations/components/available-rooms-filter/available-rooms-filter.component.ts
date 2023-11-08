@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { SearchAvailableRooms } from '../../models/reservations.models';
 
 @Component({
   selector: 'app-available-rooms-filter',
@@ -28,7 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class AvailableRoomsFilterComponent implements OnInit {
 
-  @Output() doSearch: EventEmitter<void> = new EventEmitter<void>();
+  @Output() doSearch: EventEmitter<SearchAvailableRooms> = new EventEmitter<SearchAvailableRooms>();
   form!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -36,10 +37,10 @@ export class AvailableRoomsFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      StartDate   : ['', Validators.required],
-      EndDate     : ['', Validators.required],
-      PeopleCount : ['', Validators.required],
-      City        : ['', Validators.required]
+      startDate   : ['', Validators.required],
+      endDate     : ['', Validators.required],
+      peopleCount : ['', Validators.required],
+      city        : ['', Validators.required]
     })
   }
 
@@ -56,6 +57,6 @@ export class AvailableRoomsFilterComponent implements OnInit {
   }
 
   doSearchRooms() {
-    this.doSearch.emit();
+    this.doSearch.emit(this.form.value);
   }
 }

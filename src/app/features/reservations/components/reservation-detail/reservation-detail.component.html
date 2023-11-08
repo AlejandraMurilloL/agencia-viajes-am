@@ -1,12 +1,12 @@
 <h1 mat-dialog-title>Información de la Reserva</h1>
 <div mat-dialog-content>
     <div class="basic-info">
-        <span><strong>Hotel:</strong> {{ reservation.Hotel }}</span>
-        <span><strong>Habitación:</strong> {{ reservation.Room }}</span>
-        <span><strong>Fecha de Llegada:</strong> {{ reservation.StartDate | date: 'dd-MM-yyyy'}}</span>
-        <span><strong>Fecha de Salida:</strong> {{ reservation.EndDate | date: 'dd-MM-yyyy' }}</span>
-        <span><strong>Nombre de Contacto:</strong> {{ reservation.ContactName }}</span>
-        <span><strong>Nro. de Contacto:</strong> {{ reservation.ContactPhone }}</span>
+        <span><strong>Hotel:</strong> {{ reservation.hotel }}</span>
+        <span><strong>Habitación:</strong> {{ reservation.room }}</span>
+        <span><strong>Fecha de Llegada:</strong> {{ reservation.startDate | date: 'dd-MM-yyyy'}}</span>
+        <span><strong>Fecha de Salida:</strong> {{ reservation.endDate | date: 'dd-MM-yyyy' }}</span>
+        <span><strong>Nombre de Contacto:</strong> {{ reservation.contactName }}</span>
+        <span><strong>Nro. de Contacto:</strong> {{ reservation.contactPhone }}</span>
     </div>
 
     <mat-tab-group>
@@ -15,51 +15,51 @@
         <div>
             <table mat-table *ngIf="dataSource" [dataSource]="dataSource">
 
-            <ng-container matColumnDef="FirstName">
+            <ng-container matColumnDef="firstName">
                 <th mat-header-cell *matHeaderCellDef> Nombres</th>
-                <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="LastName">
+            <ng-container matColumnDef="lastName">
                 <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-                <td mat-cell *matCellDef="let element"> {{ element.LastName }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.lastName }} </td>
             </ng-container>
 
-            <ng-container matColumnDef="Birthday">
+            <ng-container matColumnDef="birthday">
                 <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
-                <td mat-cell *matCellDef="let element"> {{ element.Birthday | date: 'dd-MM-yyyy' }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.birthday | date: 'dd-MM-yyyy' }} </td>
             </ng-container>
 
-            <ng-container matColumnDef="Gender">
+            <ng-container matColumnDef="gender">
                 <th mat-header-cell *matHeaderCellDef> Genero </th>
-                <td mat-cell *matCellDef="let element"> {{ element.Gender }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.gender }} </td>
             </ng-container>
 
-            <ng-container matColumnDef="DocumentType">
+            <ng-container matColumnDef="documentType">
                 <th mat-header-cell *matHeaderCellDef> Tipo Documento </th>
-                <td mat-cell *matCellDef="let element"> {{ element.DocumentType }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.documentType }} </td>
             </ng-container>
 
-            <ng-container matColumnDef="DocumentNumber">
+            <ng-container matColumnDef="documentNumber">
                 <th mat-header-cell *matHeaderCellDef> Nro. Documento </th>
-                <td mat-cell *matCellDef="let element"> {{ element.DocumentNumber }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.documentNumber }} </td>
             </ng-container>
 
-            <ng-container matColumnDef="Email">
+            <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef> Email </th>
-                <td mat-cell *matCellDef="let element"> {{ element.Email }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
             </ng-container>
 
-            <ng-container matColumnDef="ContactPhone">
+            <ng-container matColumnDef="contactPhone">
                 <th mat-header-cell *matHeaderCellDef> Nro. Contacto </th>
-                <td mat-cell *matCellDef="let element"> {{ element.ContactPhone }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.contactPhone }} </td>
             </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="reservation.Guests.length > 5">
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="reservation.guests.length > 5">
             </mat-paginator>
         </div>
         </mat-tab>

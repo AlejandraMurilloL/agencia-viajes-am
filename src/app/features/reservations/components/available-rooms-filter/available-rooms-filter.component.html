@@ -8,29 +8,29 @@
                 <mat-label>Fecha Reserva</mat-label>
                 <mat-date-range-input 
                   [rangePicker]="campaignOnePicker" 
-                  [comparisonStart]="form.value.StartDate"
-                  [comparisonEnd]="form.value.EndDate">
-                  <input matStartDate placeholder="Fecha Llegada" formControlName="StartDate">
-                  <input matEndDate placeholder="Fecha Salida" formControlName="EndDate">
+                  [comparisonStart]="form.value.startDate"
+                  [comparisonEnd]="form.value.endDate">
+                  <input matStartDate placeholder="Fecha Llegada" formControlName="startDate">
+                  <input matEndDate placeholder="Fecha Salida" formControlName="endDate">
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
                 <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-                <mat-error>{{ checkForErrorsIn('StartDate') }}</mat-error>
-                <mat-error>{{ checkForErrorsIn('EndDate') }}</mat-error>
+                <mat-error>{{ checkForErrorsIn('startDate') }}</mat-error>
+                <mat-error>{{ checkForErrorsIn('endDate') }}</mat-error>
               </mat-form-field>
         
               <mat-form-field appearance="outline">
                 <mat-label>Cantidad de personas</mat-label>
-                <input type="number" matInput placeholder="Ingrese la cantidad de personas" formControlName="PeopleCount">
-                <mat-error>{{ checkForErrorsIn('PeopleCount') }}</mat-error>
+                <input type="number" matInput placeholder="Ingrese la cantidad de personas" formControlName="peopleCount">
+                <mat-error>{{ checkForErrorsIn('peopleCount') }}</mat-error>
                 <mat-icon matSuffix>people</mat-icon>
               </mat-form-field>
         
               <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
-                <input matInput placeholder="Ingrese la ciudad de destino" formControlName="City">
-                <mat-error>{{ checkForErrorsIn('City') }}</mat-error>
+                <input matInput placeholder="Ingrese la ciudad de destino" formControlName="city">
+                <mat-error>{{ checkForErrorsIn('city') }}</mat-error>
                 <mat-icon matSuffix>place</mat-icon>
               </mat-form-field>
             </div>

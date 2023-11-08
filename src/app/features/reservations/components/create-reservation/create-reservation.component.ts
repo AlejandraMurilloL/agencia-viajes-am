@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { Reservation } from '../../models/reservations.models';
+import { Guest, Reservation } from '../../models/reservations.models';
 import { CreateReservationBasicInfoComponent } from '../create-reservation-basic-info/create-reservation-basic-info.component';
 import { CreateReservationGuestsComponent } from '../create-reservation-guests/create-reservation-guests.component';
 
@@ -26,15 +26,14 @@ import { CreateReservationGuestsComponent } from '../create-reservation-guests/c
 export class CreateReservationComponent {
   
   selectedIndex = 0;
-  isFormValid = false;
   reservation: Reservation = {
-    Hotel: '',
-    Room: '',
-    StartDate: new Date(),
-    EndDate: new Date(),
-    ContactName: '',
-    ContactPhone: '',
-    Guests: []
+    hotel: '',
+    room: '',
+    startDate: new Date(),
+    endDate: new Date(),
+    contactName: '',
+    contactPhone: '',
+    guests: []
   };
   
   constructor(public dialogRef: MatDialogRef<CreateReservationComponent>) {
@@ -44,7 +43,12 @@ export class CreateReservationComponent {
     this.dialogRef.close();
   }
 
-  addGuestsStep() {
+  addGuestsStep(reservation: Reservation) {
+    this.reservation = reservation;
     this.selectedIndex = 1;
+  }
+
+  addGuestToReservation(guest: Guest) {
+    this.reservation.guests.push(guest);
   }
 }

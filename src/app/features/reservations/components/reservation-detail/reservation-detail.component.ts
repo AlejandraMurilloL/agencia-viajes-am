@@ -26,16 +26,16 @@ import { Guest, Reservation } from '../../models/reservations.models';
 export class ReservationDetailComponent implements OnInit {
 
   reservation: Reservation = {
-    Hotel: '',
-    Room: '',
-    StartDate: new Date(),
-    EndDate: new Date(),
-    ContactName: '',
-    ContactPhone: '',
-    Guests: []
+    hotel: '',
+    room: '',
+    startDate: new Date(),
+    endDate: new Date(),
+    contactName: '',
+    contactPhone: '',
+    guests: []
   };
 
-  displayedColumns: string[] = ['FirstName', 'LastName', 'Birthday', 'Gender', 'DocumentType', 'DocumentNumber', 'Email', 'ContactPhone'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthday', 'gender', 'documentType', 'documentNumber', 'email', 'contactPhone'];
   dataSource: MatTableDataSource<Guest> = new MatTableDataSource();
 
   constructor(
@@ -49,7 +49,7 @@ export class ReservationDetailComponent implements OnInit {
   ngOnInit(): void { 
     if (this.data.Reservation) {
       this.reservation = this.data.Reservation;
-      this.dataSource = new MatTableDataSource(this.reservation.Guests);
+      this.dataSource = new MatTableDataSource(this.reservation.guests);
     }
   }
 

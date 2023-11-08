@@ -10,62 +10,63 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Nombres</mat-label>
-            <input matInput placeholder="Ingrese los nombres" formControlName="FirstName">
-            <mat-error>{{ checkForGuestErrorsIn('FirstName') }}</mat-error>
+            <input matInput placeholder="Ingrese los nombres" formControlName="firstName">
+            <mat-error>{{ checkForGuestErrorsIn('firstName') }}</mat-error>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
           
           <mat-form-field appearance="outline">
             <mat-label>Apellidos</mat-label>
-            <input matInput placeholder="Ingrese los apellidos" formControlName="LastName">
-            <mat-error>{{ checkForGuestErrorsIn('LastName') }}</mat-error>
+            <input matInput placeholder="Ingrese los apellidos" formControlName="lastName">
+            <mat-error>{{ checkForGuestErrorsIn('lastName') }}</mat-error>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
       
           <mat-form-field appearance="outline">
-            <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput placeholder="Ingrese la fecha de nacimiento" formControlName="Birthday">
-            <mat-error>{{ checkForGuestErrorsIn('Birthday') }}</mat-error>
-            <mat-icon matSuffix>calendar_today</mat-icon>
+            <input matInput [matDatepicker]="picker" formControlName="birthday">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>{{ checkForGuestErrorsIn('birthday') }}</mat-error>
           </mat-form-field>
       
           <mat-form-field appearance="outline">
             <mat-label>Genero</mat-label>
-            <input matInput placeholder="Ingrese el Genero" formControlName="Gender">
-            <mat-error>{{ checkForGuestErrorsIn('Gender') }}</mat-error>
+            <input matInput placeholder="Ingrese el Genero" formControlName="gender">
+            <mat-error>{{ checkForGuestErrorsIn('gender') }}</mat-error>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
       
           <mat-form-field appearance="outline">
             <mat-label>Tipo de documento</mat-label>
-            <input matInput placeholder="Ingrese el tipo de documento" formControlName="DocumentType">
-            <mat-error>{{ checkForGuestErrorsIn('DocumentType') }}</mat-error>
+            <input matInput placeholder="Ingrese el tipo de documento" formControlName="documentType">
+            <mat-error>{{ checkForGuestErrorsIn('documentType') }}</mat-error>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
       
           <mat-form-field appearance="outline">
             <mat-label>Nro. de documento</mat-label>
-            <input matInput placeholder="Ingrese el Nro. de documento" formControlName="DocumentNumber">
-            <mat-error>{{ checkForGuestErrorsIn('DocumentNumber') }}</mat-error>
+            <input matInput placeholder="Ingrese el Nro. de documento" formControlName="documentNumber">
+            <mat-error>{{ checkForGuestErrorsIn('documentNumber') }}</mat-error>
             <mat-icon matSuffix>assignment</mat-icon>
           </mat-form-field>
       
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Ingrese el email" formControlName="Email">
-            <mat-error>{{ checkForGuestErrorsIn('Email') }}</mat-error>
+            <input matInput placeholder="Ingrese el email" formControlName="email">
+            <mat-error>{{ checkForGuestErrorsIn('email') }}</mat-error>
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
       
           <mat-form-field appearance="outline">
             <mat-label>Nro. de contacto</mat-label>
-            <input matInput placeholder="Ingrese el Nro. contacto" formControlName="ContactPhone">
-            <mat-error>{{ checkForGuestErrorsIn('ContactPhone') }}</mat-error>
+            <input matInput placeholder="Ingrese el Nro. contacto" formControlName="contactPhone">
+            <mat-error>{{ checkForGuestErrorsIn('contactPhone') }}</mat-error>
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>                         
           
           <div class="buttons-container">
-            <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="true">Agregar</button>
+            <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="addGuest(form.value)">Agregar</button>
           </div>
         </div>
       </form>                      
@@ -78,44 +79,44 @@
       <div class="rooms-list">
         <table mat-table *ngIf="dataSource" [dataSource]="dataSource">
 
-          <ng-container matColumnDef="FirstName">
+          <ng-container matColumnDef="firstName">
             <th mat-header-cell *matHeaderCellDef>Nombres</th>
-            <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
           </ng-container>
           
-          <ng-container matColumnDef="LastName">
+          <ng-container matColumnDef="lastName">
             <th mat-header-cell *matHeaderCellDef>Apellidos</th>
-            <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
           </ng-container>       
 
-          <ng-container matColumnDef="Birthday">
+          <ng-container matColumnDef="birthday">
             <th mat-header-cell *matHeaderCellDef>Nacimiento</th>
-            <td mat-cell *matCellDef="let element"> {{element.Birthday}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.birthday | date : 'dd-MM-yyyy' }} </td>
           </ng-container>    
           
-          <ng-container matColumnDef="Gender">
+          <ng-container matColumnDef="gender">
             <th mat-header-cell *matHeaderCellDef>Genero</th>
-            <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
           </ng-container>     
 
-          <ng-container matColumnDef="DocumentType">
+          <ng-container matColumnDef="documentType">
             <th mat-header-cell *matHeaderCellDef>Tipo de documento</th>
-            <td mat-cell *matCellDef="let element"> {{element.DocumentType}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.documentType}} </td>
           </ng-container>     
 
-          <ng-container matColumnDef="DocumentNumber">
+          <ng-container matColumnDef="documentNumber">
             <th mat-header-cell *matHeaderCellDef>Nro. de documento</th>
-            <td mat-cell *matCellDef="let element"> {{element.DocumentNumber}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.documentNumber}} </td>
           </ng-container>    
           
-          <ng-container matColumnDef="Email">
+          <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef>Email</th>
-            <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
           </ng-container> 
 
-          <ng-container matColumnDef="ContactPhone">
+          <ng-container matColumnDef="contactPhone">
             <th mat-header-cell *matHeaderCellDef>Nro. de contacto</th>
-            <td mat-cell *matCellDef="let element"> {{element.ContactPhone}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.contactPhone}} </td>
           </ng-container> 
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

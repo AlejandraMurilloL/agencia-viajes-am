@@ -3,12 +3,12 @@
     <mat-tab-group [selectedIndex]="selectedIndex">
         <mat-tab label="Datos Básicos">
           <div class="tab-content">
-            <app-create-reservation-basic-info (basicInfoAdded)="addGuestsStep()" />         
+            <app-create-reservation-basic-info (basicInfoAdded)="addGuestsStep($event)" />         
           </div>
         </mat-tab>
         <mat-tab label="Huéspedes">
             <div class="tab-content">
-              <app-create-reservation-guests/>    
+              <app-create-reservation-guests (addGuestToReservation)="addGuestToReservation($event)"/>    
             </div>
         </mat-tab>
     </mat-tab-group>
@@ -16,5 +16,5 @@
 
 <div mat-dialog-actions class="buttons-container">
   <button mat-raised-button (click)="onNoClick()">Cancelar</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="reservation" [disabled]="!isFormValid">Guardar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="reservation" [disabled]="!!reservation && reservation.guests.length === 0">Guardar</button>
 </div>

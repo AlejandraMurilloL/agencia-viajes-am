@@ -39,13 +39,15 @@ export class CreateReservationBasicInfoComponent implements OnInit {
     const selectedRoom = this.data.availableRoom;
 
     this.form = this.formBuilder.group({
-      Hotel       : [{ value: selectedRoom.Hotel, disabled: true }, Validators.required],
-      Room        : [{ value: selectedRoom.Room, disabled: true }, Validators.required],
-      StartDate   : [{ value: selectedRoom.StartDate.toLocaleDateString(), disabled: true }, Validators.required],
-      EndDate     : [{ value: selectedRoom.EndDate.toLocaleDateString(), disabled: true }, Validators.required],
-      ContactName : ['', Validators.required],
-      ContactPhone: ['', Validators.required],
-      Guests      : [[]]
+      hotelName   : [{ value: selectedRoom.hotelName, disabled: true }, Validators.required],
+      roomName    : [{ value: selectedRoom.roomName, disabled: true }, Validators.required],
+      startDate   : [{ value: selectedRoom.startDate, disabled: true }, Validators.required],
+      endDate     : [{ value: selectedRoom.endDate, disabled: true }, Validators.required],
+      contactName : ['', Validators.required],
+      contactPhone: ['', Validators.required],
+      guests      : [[]],
+      hotelId     : [selectedRoom.hotelId],
+      roomId      : [selectedRoom.roomId]
     });
   }
 
@@ -62,6 +64,9 @@ export class CreateReservationBasicInfoComponent implements OnInit {
   }
 
   passToGuestsStep() {
-    this.basicInfoAdded.emit(this.form.value);
+    const reservation = this.form.value;
+    reservation.startDate = this.data.availableRoom.startDate;
+    reservation.endDate = this.data.availableRoom.endDate;
+    this.basicInfoAdded.emit(reservation);
   }
 }

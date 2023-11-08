@@ -1,35 +1,35 @@
 export interface Reservation {
-    Hotel: string;
-    Room: string;
-    StartDate: Date;
-    EndDate: Date;
-    ContactName: string;
-    ContactPhone: string;
-    Guests: Guest[];
+    hotel: string;
+    room: string;
+    startDate: Date;
+    endDate: Date;
+    contactName: string;
+    contactPhone: string;
+    guests: Guest[];
 }
 
 export interface Guest {
-    FirstName: string;
-    LastName: string;
-    Birthday: Date;
-    Gender: string;
-    DocumentType: string;
-    DocumentNumber: string;
-    Email: string;
-    ContactPhone: string;
+    firstName: string;
+    lastName: string;
+    birthday: Date;
+    gender: string;
+    documentType: string;
+    documentNumber: string;
+    email: string;
+    cContactPhone: string;
 }
 
 export interface SearchAvailableRooms {
-    StartDate: Date;
-    EndDate: Date;
-    PeopleCount: number;
-    City: string;
+    startDate: Date;
+    endDate: Date;
+    peopleCount: number;
+    city: string;
 }
 
 export interface AvailableRooms {
-    StartDate: Date;
-    EndDate: Date;
-    Hotel: string;
-    Room: string;
-    Price: number;
+    startDate: Date;
+    endDate: Date;
+    hotel: string;
+    room: string;
+    price: number;
 }

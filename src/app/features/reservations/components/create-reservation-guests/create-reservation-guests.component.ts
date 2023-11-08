@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,16 +25,18 @@ import { Guest } from '../../models/reservations.models';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
+    MatDatepickerModule,
     ReactiveFormsModule,
   ],
   templateUrl: './create-reservation-guests.component.html',
   styleUrls: ['./create-reservation-guests.component.css']
 })
 export class CreateReservationGuestsComponent implements OnInit {
+  @Output() addGuestToReservation: EventEmitter<Guest> = new EventEmitter<Guest>();
   form!: FormGroup;
   guests: Guest[] = [];
 
-  displayedColumns: string[] = ['FirstName', 'LastName', 'Birthday', 'Gender', 'DocumentType', 'DocumentNumber', 'Email', 'ContactPhone'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthday', 'gender', 'documentType', 'documentNumber', 'email', 'contactPhone'];
   dataSource: MatTableDataSource<Guest> = new MatTableDataSource();
 
   constructor(private formBuilder: FormBuilder) {
@@ -42,14 +45,14 @@ export class CreateReservationGuestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      FirstName     : ['', Validators.required],
-      LastName      : ['', Validators.required],
-      Birthday      : ['', Validators.required],
-      DocumentType  : ['', Validators.required],
-      DocumentNumber: ['', Validators.required],
-      Gender        : ['', Validators.required],
-      Email         : ['', [Validators.required, Validators.email]],
-      ContactPhone  : ['', Validators.required]
+      firstName     : ['', Validators.required],
+      lastName      : ['', Validators.required],
+      birthday      : ['', Validators.required],
+      documentType  : ['', Validators.required],
+      documentNumber: ['', Validators.required],
+      gender        : ['', Validators.required],
+      email         : ['', [Validators.required, Validators.email]],
+      contactPhone  : ['', Validators.required]
     });
   }
 
@@ -67,5 +70,11 @@ export class CreateReservationGuestsComponent implements OnInit {
     }
 
     return '';
+  }
+
+  addGuest(guest: Guest){
+    this.guests.push(guest);
+    this.dataSource = new MatTableDataSource(this.guests)
+    this.addGuestToReservation.emit(guest);
   }
 }

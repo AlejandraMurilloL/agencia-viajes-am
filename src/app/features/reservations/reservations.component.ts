@@ -24,7 +24,7 @@ import { ReservationsService } from './services/reservations.service';
   styleUrls: ['./reservations.component.css']
 })
 export class ReservationsComponent implements OnInit {
-  displayedColumns: string[] = ['Hotel', 'Room', 'StartDate', 'EndDate', 'ContactName', 'ContactPhone', 'Actions'];
+  displayedColumns: string[] = ['hotel', 'room', 'startDate', 'endDate', 'contactName', 'contactPhone', 'Actions'];
   dataSource: MatTableDataSource<Reservation> = new MatTableDataSource();
 
   constructor(
