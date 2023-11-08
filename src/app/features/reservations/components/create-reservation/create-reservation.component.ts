@@ -27,8 +27,8 @@ export class CreateReservationComponent {
   
   selectedIndex = 0;
   reservation: Reservation = {
-    hotel: '',
-    room: '',
+    hotelId: '',
+    roomId: '',
     startDate: new Date(),
     endDate: new Date(),
     contactName: '',

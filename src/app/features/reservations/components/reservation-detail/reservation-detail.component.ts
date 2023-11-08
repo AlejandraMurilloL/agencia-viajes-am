@@ -26,8 +26,8 @@ import { Guest, Reservation } from '../../models/reservations.models';
 export class ReservationDetailComponent implements OnInit {
 
   reservation: Reservation = {
-    hotel: '',
-    room: '',
+    hotelId: '',
+    roomId: '',
     startDate: new Date(),
     endDate: new Date(),
     contactName: '',
