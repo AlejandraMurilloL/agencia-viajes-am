@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    baseUrlApi: 'https://localhost:44309/api/'
+    baseUrlApi: 'https://agencia-viajes-am-api.azurewebsites.net/api/'
 };
