@@ -74,7 +74,8 @@ export class CreateReservationGuestsComponent implements OnInit {
 
   addGuest(guest: Guest){
     this.guests.push(guest);
-    this.dataSource = new MatTableDataSource(this.guests)
+    this.dataSource = new MatTableDataSource(this.guests);
+    this.form.reset();
     this.addGuestToReservation.emit(guest);
   }
 }
