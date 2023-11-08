@@ -43,7 +43,13 @@ export class HotelRoomsComponent implements OnInit {
   }
 
   onAddRoom(room: Room) {
-    this.hotelService.addRoomToHotel(room);
+    this.hotelService.addRoomToHotel(room)
+      .subscribe(() => {
+        this.hotelService.getHotelById(room.hotelId || 0)
+        .subscribe( data => {
+          this.hotel = data;
+        });
+      });
   }
 
   onNoClick(): void {

@@ -8,12 +8,12 @@ export interface Hotel {
 }
 
 export interface Room {
-    id: string;
+    id: number;
     name: string;
-    hotelId?: string;
+    hotelId: number;
 	baseCost: number;
 	taxes: number;
-	roomType: string;
+	roomTypeName: string;
 	roomTypeId: string;
 	location: string;
 	active: boolean;

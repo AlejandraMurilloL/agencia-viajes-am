@@ -39,8 +39,9 @@ export class HotelCardComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.hotelsService.updateHotel(result);
-        this.hotelEdited.emit();
+        this.hotelsService
+          .updateHotel(result)
+          .subscribe(() => this.hotelEdited.emit());
       }
     });
   }
@@ -51,10 +52,13 @@ export class HotelCardComponent {
       data: { hotel: { ...this.hotel } }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.hotelEdited.emit();
-      }
-    });
+    dialogRef.afterClosed().subscribe(() => this.hotelEdited.emit());
+  }
+
+  onHotelStatusChanged() {
+    this.hotel.active = !this.hotel.active;
+    this.hotelsService
+      .changeHotelStatus(this.hotel.id, this.hotel.active)
+      .subscribe();
   }
 }

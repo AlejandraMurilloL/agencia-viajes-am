@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Hotel, Room, RoomType } from '../../models/hotels.models';
+import { HotelsService } from '../../services/hotels.service';
 
 @Component({
   selector: 'app-hotel-rooms-detail',
@@ -29,28 +30,18 @@ export class HotelRoomsDetailComponent implements OnInit {
   
   @Input() hotel!: Hotel;
   @Output() addRoom: EventEmitter<Room> = new EventEmitter<Room>();
-  form!: FormGroup;
   
-  roomTypes: RoomType[] = [
-    {
-      id: '001',
-      name: 'Doble'
-    },
-    {
-      id: '002',
-      name: 'Familiar'
-    },
-    {
-      id: '003',
-      name: 'Suite'
-    },
-  ];
+  form!: FormGroup;  
+  roomTypes: RoomType[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private hotelService: HotelsService) {
 
   }
 
   ngOnInit(): void {
+    this._loadRoomTypes();
     this.form = this.formBuilder.group({
       id         : [''],
       name       : ['', Validators.required],
@@ -77,6 +68,11 @@ export class HotelRoomsDetailComponent implements OnInit {
   }
 
   addRoomEmit(room: Room) {
+    this.form.reset();
     this.addRoom.emit(room);
+  }
+
+  private _loadRoomTypes() {
+    this.hotelService.getAllRoomTypes().subscribe(data => this.roomTypes = data);
   }
 }
